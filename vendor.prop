@@ -215,7 +215,9 @@ vendor.power.pasr.enabled=false
 # QC framework value-adds
 ro.vendor.qti.va_aosp.support=1
 
+
 # Radio
+persist.vendor.radio.add_power_save=1
 persist.vendor.radio.custom_ecc=1
 persist.vendor.radio.data_ltd_sys_ind=1
 persist.vendor.radio.dynamic_sar=false
