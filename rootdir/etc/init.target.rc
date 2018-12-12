@@ -27,6 +27,9 @@
 #
 #
 on early-init
+    # Disable EAS
+    write /proc/sys/kernel/sched_energy_aware 0
+    
     symlink /data/tombstones /tombstones
 
 on init
