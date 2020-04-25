@@ -235,6 +235,7 @@ persist.vendor.radio.procedure_bytes=SKIP
 persist.vendor.radio.rat_on=combine
 persist.vendor.radio.report_codec=1
 persist.vendor.radio.sib16_support=1
+persist.vendor.radio.vdp_on_ims_cap=1
 
 # Sensors
 persist.vendor.sensors.enable.mag_filter=true
