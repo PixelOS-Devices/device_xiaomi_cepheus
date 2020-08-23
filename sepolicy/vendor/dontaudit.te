@@ -17,3 +17,7 @@ dontaudit gmscore_app {
 # Ignore in user builds
 dontaudit traced_probes debugfs_tracing_debug:file rw_file_perms;
 dontaudit hal_atrace_default debugfs_tracing_debug:file rw_file_perms;
+
+# Apps are no longer allowed open access to /dev/ashmem, unless they
+# target API level < Q.
+dontaudit untrusted_app ashmem_device:chr_file open;
