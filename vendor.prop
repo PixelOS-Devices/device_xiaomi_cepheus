@@ -260,3 +260,6 @@ wifi.aware.interface=wifi-aware0
 persist.vendor.sys.fp.udfps.location.X_Y=455,1920
 persist.vendor.sys.fp.udfps.size.width_height=173,173
 ro.hardware.fp.udfps=true
+
+# Zygote
+zygote.critical_window.minute=10
