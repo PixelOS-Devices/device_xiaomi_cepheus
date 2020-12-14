@@ -140,6 +140,12 @@ on boot
     chown system system /sys/class/power_supply/battery/input_suspend
     chmod 0666 /sys/class/power_supply/battery/input_suspend
 
+    # Enable qcrild and data services
+    enable vendor.qcrild
+    enable vendor.qcrild2
+    enable vendor.dataqti
+    enable vendor.dataadpl
+
 on post-fs-data
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
@@ -221,12 +227,6 @@ on post-fs-data
 
     # Make MTU adjusting
     write /proc/sys/net/ipv4/tcp_mtu_probing 1
-
-    # Start qcrild and data services
-    start vendor.qcrild
-    start vendor.qcrild2
-    start vendor.dataqti
-    start vendor.dataadpl
 
     setprop vold.post_fs_data_done 1
 
