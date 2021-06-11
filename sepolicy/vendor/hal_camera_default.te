@@ -1,6 +1,3 @@
-# For interfacing with PowerHAL
-hal_client_domain(hal_camera_default, hal_power)
-
 allow hal_camera_default proc_meminfo:file r_file_perms;
 
 # Allow hal_camera_default to read files in kgsl sysfs
