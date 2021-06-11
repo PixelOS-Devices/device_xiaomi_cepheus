@@ -7,9 +7,6 @@ set_prop(hal_audio_default, vendor_audio_prop)
 
 allow hal_audio_default audio_socket:sock_file rw_file_perms;
 
-# For interfacing with PowerHAL
-hal_client_domain(hal_camera_default, hal_power)
-
 userdebug_or_eng(`
   diag_use(hal_audio_default)
 ');
