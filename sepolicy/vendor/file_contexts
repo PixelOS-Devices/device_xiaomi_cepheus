@@ -22,7 +22,7 @@
 
 # HALs
 /vendor/bin/hw/android\.hardware\.lights-service\.cepheus                                              u:object_r:hal_light_default_exec:s0
-/vendor/bin/hw/android\.hardware\.power@1\.3-service\.xiaomi_sm8150                                    u:object_r:hal_power_default_exec:s0
+/vendor/bin/hw/android\.hardware\.power@1\.3-service\.xiaomi_msmnile                                   u:object_r:hal_power_default_exec:s0
 
 # Hexagon DSP-side executable needed for Halide operation
 # This is labeled as public_adsprpcd_file as it needs to be read by apps
