@@ -433,7 +433,7 @@ LocAdapterBase::reportLatencyInfoEvent(const GnssLatencyInfo& /*gnssLatencyInfo*
 DEFAULT_IMPL()
 
 bool LocAdapterBase::
-    reportQwesCapabilities(const std::unordered_map<LocationQwesFeatureType, bool> &featureMap)
+    reportQwesCapabilities(const std::unordered_map<LocationQwesFeatureType, bool>& /*featureMap*/)
 DEFAULT_IMPL(false)
 
 } // namespace loc_core
