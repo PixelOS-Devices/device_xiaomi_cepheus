@@ -247,7 +247,28 @@ PRODUCT_DEX_PREOPT_BOOT_IMAGE_PROFILE_LOCATION := frameworks/base/config/boot-im
 
 # Input
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/keylayout/gpio-keys.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/gpio-keys.kl
+    $(LOCAL_PATH)/configs/keylayout/gpio-keys.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/gpio-keys.kl \
+    $(LOCAL_PATH)/configs/keylayout/Vendor_0079_Product_0011.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/Vendor_0079_Product_0011.kl \
+    $(LOCAL_PATH)/configs/keylayout/Vendor_045e_Product_028e.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/Vendor_045e_Product_028e.kl \
+    $(LOCAL_PATH)/configs/keylayout/Vendor_045e_Product_028f.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/Vendor_045e_Product_028f.kl \
+    $(LOCAL_PATH)/configs/keylayout/Vendor_045e_Product_0291.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/Vendor_045e_Product_0291.kl \
+    $(LOCAL_PATH)/configs/keylayout/Vendor_045e_Product_02a1.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/Vendor_045e_Product_02a1.kl \
+    $(LOCAL_PATH)/configs/keylayout/Vendor_045e_Product_02d1.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/Vendor_045e_Product_02d1.kl \
+    $(LOCAL_PATH)/configs/keylayout/Vendor_045e_Product_02e0.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/Vendor_045e_Product_02e0.kl \
+    $(LOCAL_PATH)/configs/keylayout/Vendor_045e_Product_02e3.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/Vendor_045e_Product_02e3.kl \
+    $(LOCAL_PATH)/configs/keylayout/Vendor_045e_Product_02e6.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/Vendor_045e_Product_02e6.kl \
+    $(LOCAL_PATH)/configs/keylayout/Vendor_045e_Product_02ea.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/Vendor_045e_Product_02ea.kl \
+    $(LOCAL_PATH)/configs/keylayout/Vendor_045e_Product_02fd.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/Vendor_045e_Product_02fd.kl \
+    $(LOCAL_PATH)/configs/keylayout/Vendor_045e_Product_0719.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/Vendor_045e_Product_0719.kl \
+    $(LOCAL_PATH)/configs/keylayout/Vendor_045e_Product_0b12.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/Vendor_045e_Product_0b12.kl \
+    $(LOCAL_PATH)/configs/keylayout/Vendor_054c_Product_0268.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/Vendor_054c_Product_0268.kl \
+    $(LOCAL_PATH)/configs/keylayout/Vendor_054c_Product_05c4.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/Vendor_054c_Product_05c4.kl \
+    $(LOCAL_PATH)/configs/keylayout/Vendor_054c_Product_09cc.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/Vendor_054c_Product_09cc.kl \
+    $(LOCAL_PATH)/configs/keylayout/Vendor_054c_Product_0ce6.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/Vendor_054c_Product_0ce6.kl \
+    $(LOCAL_PATH)/configs/keylayout/Vendor_057e_Product_2009.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/Vendor_057e_Product_2009.kl \
+    $(LOCAL_PATH)/configs/keylayout/Vendor_0810_Product_0001.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/Vendor_0810_Product_0001.kl \
+    $(LOCAL_PATH)/configs/keylayout/Vendor_1038_Product_1412.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/Vendor_1038_Product_1412.kl \
+    $(LOCAL_PATH)/configs/keylayout/Vendor_146b_Product_0d01.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/Vendor_146b_Product_0d01.kl
 
 # IR
 PRODUCT_PACKAGES += \
