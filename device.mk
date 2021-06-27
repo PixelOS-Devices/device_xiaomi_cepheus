@@ -26,6 +26,9 @@ PRODUCT_SHIPPING_API_LEVEL := 28
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/audio/,$(TARGET_COPY_OUT_VENDOR)/etc)
 
+# FOD
+TARGET_HAS_FOD := true
+
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
