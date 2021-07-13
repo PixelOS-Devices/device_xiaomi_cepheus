@@ -1101,4 +1101,8 @@
 
     <!-- Enable Screen Off FOD Toggle -->
     <bool name="config_supportsScreenOffUdfps">true</bool>
+    
+    <!-- Whether or not wcg (wide color gamut) should be enabled on this device,
+          we only enabled it while the device has ability of mixed color spaces composition -->
+    <bool name="config_enableWcgMode">true</bool>
 </resources>
