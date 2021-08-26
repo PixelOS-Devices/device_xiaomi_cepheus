@@ -255,7 +255,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/bin/init.qcom.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qcom.sh
 
 PRODUCT_PACKAGES += \
-    init.insmod.sh
+    init.insmod.sh \
+    init.qcom.power.rc
 
 # Input
 PRODUCT_COPY_FILES += \

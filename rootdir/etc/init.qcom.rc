@@ -25,6 +25,7 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
+import /vendor/etc/init/hw/init.qcom.power.rc
 import /vendor/etc/init/hw/init.qcom.usb.rc
 import /vendor/etc/init/hw/init.target.rc
 
@@ -263,7 +264,6 @@ on property:sys.boot_completed=1
 
     # Reinit lmkd to reconfigure lmkd properties
     setprop lmkd.reinit 1
-    setprop vendor.setup.power 1
 
 service vendor.qrtr-ns /vendor/bin/qrtr-ns -f
     class core
@@ -347,16 +347,6 @@ service vendor.audio-hal /vendor/bin/hw/android.hardware.audio.service
     task_profiles ProcessCapacityHigh HighPerformance
     socket audio_hw_socket seqpacket 0666 system system
     onrestart restart audioserver
-
-on charger
-    setprop vendor.setup.power 1
-
-    write /sys/devices/system/cpu/cpu1/online 0
-    write /sys/devices/system/cpu/cpu2/online 0
-    write /sys/devices/system/cpu/cpu3/online 0
-    write /sys/devices/system/cpu/cpu4/online 0
-    write /sys/devices/system/cpu/cpu5/online 0
-    write /sys/devices/system/cpu/cpu7/online 0
 
 on property:init.svc.vendor.charger=running
     # Keep one LITTLE and one BIG
