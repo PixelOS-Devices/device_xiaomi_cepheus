@@ -14,8 +14,7 @@
 # limitations under the License.
 #
 
-# Product launched with 9.0
-$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_p.mk)
+# Enable updating of APEXes
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
 # Project ID Quota
@@ -461,6 +460,9 @@ PRODUCT_PACKAGES += \
 # Shim
 PRODUCT_PACKAGES += \
     libwatermark_shim
+    
+# Shipping API
+PRODUCT_SHIPPING_API_LEVEL := 28
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
