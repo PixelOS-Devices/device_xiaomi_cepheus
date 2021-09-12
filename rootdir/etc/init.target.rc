@@ -165,6 +165,13 @@ on property:sys.boot_completed=1
     write /dev/cpuset/background/cpus 0-1
     write /dev/cpuset/system-background/cpus 0-3
     write /dev/cpuset/restricted/cpus 0-3
+    
+    # Disable wsf, beacause we are using efk.
+    # wsf Range : 1..1000 So set to bare minimum value 1.
+    write /proc/sys/vm/watermark_scale_factor 1
+
+    # Enable oom_reaper
+    write /sys/module/lowmemorykiller/parameters/oom_reaper 1
 
 service vendor.pd_mapper /vendor/bin/pd-mapper
     class core
