@@ -256,7 +256,8 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     init.affinity.sh \
-    init.insmod.sh
+    init.insmod.sh \
+    init.power.rc
 
 # Input
 PRODUCT_COPY_FILES += \
