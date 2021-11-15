@@ -550,9 +550,6 @@ vendor/lib64/vendor.qti.hardware.qccsyshal@1.0.so
 
 # GPS (configs)
 vendor/etc/apdr.conf
-vendor/etc/flp.conf
-vendor/etc/gnss_antenna_info.conf
-vendor/etc/gps.conf
 vendor/etc/izat.conf
 vendor/etc/lowi.conf
 vendor/etc/sap.conf
