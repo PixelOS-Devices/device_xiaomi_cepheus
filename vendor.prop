@@ -145,6 +145,9 @@ ro.crypto.volume.filenames_mode=aes-256-cts
 ro.crypto.volume.metadata.method=dm-default-key
 ro.crypto.volume.options=::v2
 
+# Dalvik
+dalvik.vm.dex2oat64.enabled=true
+
 # DPM
 persist.vendor.dpm.feature=1
 persist.vendor.dpm.nsrm.bkg.evt=3955
