@@ -65,7 +65,7 @@ function blob_fixup() {
         patchelf --remove-needed "android.hidl.base@1.0.so" "${2}"
         ;;
     vendor/bin/mi_thermald)
-            sed -i "s|ug_cpu|ug_uwu|g" "${2}"
+            sed -i 's/%d\/on/%d\/../g' "${2}"
         ;;
     vendor/lib64/hw/camera.qcom.so)
         patchelf --remove-needed "libMegviiFacepp-0.5.2.so" "${2}"
