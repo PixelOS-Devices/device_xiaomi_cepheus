@@ -234,6 +234,21 @@ vendor/lib64/libhvx_proxy_stub.so
 vendor/lib64/vendor.goodix.hardware.biometrics.fingerprint@2.1.so
 vendor/lib64/vendor.xiaomi.hardware.fingerprintextension@1.0.so
 
+# IPA firmware
+vendor/etc/init/ipa_fws.rc
+vendor/firmware/ipa_fws.b00
+vendor/firmware/ipa_fws.b01
+vendor/firmware/ipa_fws.b02
+vendor/firmware/ipa_fws.b03
+vendor/firmware/ipa_fws.b04
+vendor/firmware/ipa_fws.elf
+vendor/firmware/ipa_fws.mdt
+vendor/firmware/ipa_uc.b00
+vendor/firmware/ipa_uc.b01
+vendor/firmware/ipa_uc.b02
+vendor/firmware/ipa_uc.elf
+vendor/firmware/ipa_uc.mdt
+
 # Sensors
 vendor/bin/init.qcom.sensors.sh
 vendor/bin/sensors.qti
