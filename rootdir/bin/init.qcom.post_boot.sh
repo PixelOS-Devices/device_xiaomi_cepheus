@@ -94,20 +94,14 @@ case "$target" in
 
     # Configure governor settings for silver cluster
     echo "schedutil" > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
-    echo 5000 > /sys/devices/system/cpu/cpufreq/policy0/schedutil/up_rate_limit_us
-    echo 1000 > /sys/devices/system/cpu/cpufreq/policy0/schedutil/down_rate_limit_us
     echo 1 > /sys/devices/system/cpu/cpufreq/policy0/schedutil/iowait_boost_enable
 
     # Configure governor settings for gold cluster
     echo "schedutil" > /sys/devices/system/cpu/cpufreq/policy4/scaling_governor
-    echo 5000 > /sys/devices/system/cpu/cpufreq/policy4/schedutil/up_rate_limit_us
-    echo 1000 > /sys/devices/system/cpu/cpufreq/policy4/schedutil/down_rate_limit_us
     echo 1 > /sys/devices/system/cpu/cpufreq/policy4/schedutil/iowait_boost_enable
 
     # Configure governor settings for gold+ cluster
     echo "schedutil" > /sys/devices/system/cpu/cpufreq/policy7/scaling_governor
-    echo 5000 > /sys/devices/system/cpu/cpufreq/policy7/schedutil/up_rate_limit_us
-    echo 1000 > /sys/devices/system/cpu/cpufreq/policy7/schedutil/down_rate_limit_us
     echo 1 > /sys/devices/system/cpu/cpufreq/policy7/schedutil/iowait_boost_enable
 
     # Disable wsf, beacause we are using efk.
