@@ -1,11 +1,14 @@
 # Allow vendor_init to set vendor_persist_camera_prop
 set_prop(vendor_init, vendor_camera_prop)
 
+set_prop(vendor_init, vendor_power_prop)
+
 # Allow vendor_init to write to vm, clk debugfs and energy aware sysfs
 allow vendor_init {
   sysfs_scsi_devices_0000
   proc_dirty
   proc_sched_energy_aware
+  proc
 }:file w_file_perms;
 
 # Allow init to bind mount dsp file

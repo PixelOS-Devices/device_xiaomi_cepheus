@@ -56,6 +56,9 @@
 /proc/touchpanel/wake_gesture                                                                          u:object_r:sysfs_touchpanel:s0
 /sys/devices/platform/soc/c80000.i2c/i2c-2/2-0049/input/input4/wake_gesture                            u:object_r:sysfs_touchpanel:s0
 
+# UFS
+/sys/devices/platform/soc/[a-f0-9]+.ufshc/clkgate_enable                                               u:object_r:vendor_sysfs_scsi_host:s0
+
 # USB
 /vendor/bin/init\.mi\.usb\.sh                                                                          u:object_r:vendor_qti_init_shell_exec:s0
 
