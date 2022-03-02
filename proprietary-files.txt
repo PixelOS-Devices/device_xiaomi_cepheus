@@ -558,7 +558,7 @@ vendor/etc/lowi.conf
 vendor/etc/sap.conf
 vendor/etc/xtwifi.conf
 
-# Graphics (Adreno) - from LA.UM.9.14.r1-19300-LAHAINA.QSSI12.0
+# Graphics (Adreno) - from LA.UM.9.14.r1-19300.01-LAHAINA.QSSI12.0
 vendor/gpu/kbc/sequence_manifest.bin|cc050a8058904871b3cfabec74521d42f0a61a1f
 vendor/gpu/kbc/unified_kbcs_32.bin|503228f87adc71131aa8134659b00dffe073e973
 vendor/gpu/kbc/unified_kbcs_64.bin|d63c26959dc02b2efc251953e99dc6e7c32e7f6e
@@ -569,25 +569,22 @@ vendor/lib/egl/libGLESv1_CM_adreno.so|5ab7196d4c8ae861ff484cb6b1f4b5ac3c9738b4
 vendor/lib/egl/libGLESv2_adreno.so|98e822d811c58a59108430c68d44f1d45dc57b9d
 vendor/lib/egl/libq3dtools_adreno.so|994551fb9b829caf80bb7a8f84b4b89cb3104ed9
 vendor/lib/egl/libq3dtools_esx.so|8209e53553f98deb4ca622cd78e7dc86cb1fb86f
+vendor/lib/hw/vulkan.adreno.so|b15e251e90f16cd64ed6446998c2e0c88ffb1472
 vendor/lib/libC2D2.so|1c89e545a5dabc94d27db32031594a792d91d6fd
-vendor/lib/libCB.so|230936cc02cd7330abd23beb6337302b320dc436
-vendor/lib/libOpenCL.so|f319002397d5089e4435fe19ad3916580fd6b731
 vendor/lib/libVkLayer_q3dtools.so|c7f57f12347240a32b996a01ff7ef8881e17fb5e
 vendor/lib/libadreno_app_profiles.so|a4002050fbb050b0939dfe8a75d5d99719265fc8
 vendor/lib/libadreno_utils.so|a6c9f87484c844e0c07c38ed9f2b9b4373555913
 vendor/lib/libc2d30_bltlib.so|5dce0e76e03b9cac4fc1f104524625a6f561fe91
 vendor/lib/libgpudataproducer.so|11fd6d18295c5b3b324cbda61dac242a5afa1f3d
 vendor/lib/libgsl.so|95eb515cc1ff810f7abc8e3588e0347c80cc42a4
-vendor/lib/libkcl.so|4de6a2a00aed99c2f180ae5cf3ec03a96b3be2d7
-vendor/lib/libkernelmanager.so|09e05782cae3b8c5910d069c9d79eb4e58f2801d
 vendor/lib/libllvm-glnext.so|f3b55b4f50a309b0e2e71513c8c0c439fb5943fa
-vendor/lib/libllvm-qcom.so|68bfbf4b6072af78106e7e96e252a664026015c0
 vendor/lib64/egl/eglSubDriverAndroid.so|ac9099723b30614cf7c61c667204a392959694db
 vendor/lib64/egl/libEGL_adreno.so|5bedfed4eee4e02bc8b655a205c549ca9fd47591
 vendor/lib64/egl/libGLESv1_CM_adreno.so|b9e14710b9c2be024e1fdf77d60266423e484047
 vendor/lib64/egl/libGLESv2_adreno.so|3a9210ef2b43a60c9ae9a2b28a5648cdb2ac4bd6
 vendor/lib64/egl/libq3dtools_adreno.so|172810bc218ab55fe95f628ab1c0d37833eb0021
 vendor/lib64/egl/libq3dtools_esx.so|0556ed38bf6c1b9d377df2df90e72c6cb5ec59ba
+vendor/lib64/hw/vulkan.adreno.so|96a4db30f36886c84a7e145fd412fc4d1ee83fbf
 vendor/lib64/libC2D2.so|0b4aa67ef7e86df61a1bfd7dfd4680e0f0d7104c
 vendor/lib64/libCB.so|cb1311c529b70efa2fcc68dc25335d0380ad3c5e
 vendor/lib64/libOpenCL.so|ac283fe3cd39fd8dffb2cb30c8b30840dc879d45
