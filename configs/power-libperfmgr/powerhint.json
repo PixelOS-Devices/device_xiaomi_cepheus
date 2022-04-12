@@ -518,6 +518,12 @@
       "Value": "0"
     },
     {
+      "PowerHint": "LAUNCH",
+      "Node": "TASchedtuneHighCap",
+      "Duration": 3000,
+      "Value": "1"
+    },
+    {
       "PowerHint": "DISPLAY_INACTIVE",
       "Node": "F2fsRecessModeEnable",
       "Duration": 0,
