@@ -222,3 +222,8 @@ persist.sys.binary_xml=false
 
 # WiFi
 wifi.aware.interface=wifi-aware0
+
+# IFAAService
+persist.vendor.sys.fp.udfps.location.X_Y=455,1920
+persist.vendor.sys.fp.udfps.size.width_height=173,173
+ro.hardware.fp.udfps=true
