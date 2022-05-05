@@ -126,10 +126,6 @@ ro.crypto.volume.filenames_mode=aes-256-cts
 ro.crypto.volume.metadata.method=dm-default-key
 ro.crypto.volume.options=::v2
 
-# Data modules
-persist.vendor.data.iwlan.enable=true
-persist.vendor.data.mode=concurrent
-
 # DPM
 persist.vendor.dpm.feature=1
 persist.vendor.dpm.nsrm.bkg.evt=3955
@@ -193,18 +189,15 @@ vendor.power.pasr.enabled=true
 ro.vendor.qti.va_aosp.support=1
 
 # Radio
-persist.vendor.radio.apm_sim_not_pwdn=1
 persist.vendor.radio.custom_ecc=1
 persist.vendor.radio.data_ltd_sys_ind=1
 persist.vendor.radio.dynamic_sar=false
-persist.vendor.radio.enableadvancedscan=true
 persist.vendor.radio.force_ltd_sys_ind=1
 persist.vendor.radio.force_on_dc=true
 persist.vendor.radio.mt_sms_ack=30
 persist.vendor.radio.procedure_bytes=SKIP
 persist.vendor.radio.rat_on=combine
 persist.vendor.radio.report_codec=1
-persist.vendor.radio.sib16_support=1
 
 # Sensors
 persist.vendor.sensors.enable.mag_filter=true
