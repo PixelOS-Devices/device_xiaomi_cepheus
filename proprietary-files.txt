@@ -14,22 +14,36 @@ vendor/etc/acdbdata/adsp_avs_config.acdb
 
 # ADSP modules
 vendor/lib/rfsa/adsp/capi_v2_cirrus_sp.so
+vendor/lib/rfsa/adsp/libSuperSensor_skel.so
+vendor/lib/rfsa/adsp/libVC1Dec.so
+vendor/lib/rfsa/adsp/libVC1DecDsp_skel.so
+vendor/lib/rfsa/adsp/libapps_mem_heap.so
 vendor/lib/rfsa/adsp/libarcsoft_dualcam_refocus_skel.so
+vendor/lib/rfsa/adsp/libcamera_nn_skel.so
+vendor/lib/rfsa/adsp/libcvpdsp_skel.so
+vendor/lib/rfsa/adsp/libdspCV_skel.so
+vendor/lib/rfsa/adsp/libdsp_streamer_add_constant.so
+vendor/lib/rfsa/adsp/libdsp_streamer_binning.so
+vendor/lib/rfsa/adsp/libdsp_streamer_skel.so
+vendor/lib/rfsa/adsp/libfastcvadsp.so
+vendor/lib/rfsa/adsp/libfastcvdsp_skel.so
+vendor/lib/rfsa/adsp/libhexagon_nn_skel.so
 vendor/lib/rfsa/adsp/libproxy_skel.so
+vendor/lib/rfsa/adsp/libscveObjectSegmentation_skel.so
+vendor/lib/rfsa/adsp/libscveT2T_skel.so
+vendor/lib/rfsa/adsp/libsnpe_dsp_v65_domains_v2_skel.so
+vendor/lib/rfsa/adsp/libsnpe_dsp_v66_domains_v2_skel.so
+vendor/lib/rfsa/adsp/libsns_device_mode_skel.so
+vendor/lib/rfsa/adsp/libsns_low_lat_stream_skel.so
+vendor/lib/rfsa/adsp/libworker_pool.so
+vendor/lib/rfsa/adsp/misound_karaoke_res.bin
+vendor/lib/rfsa/adsp/misound_karaokemix_res.bin
 vendor/lib/rfsa/adsp/misound_res.bin
 
-# Audio
-vendor/lib/soundfx/libmisoundfx.so
-vendor/lib/liba2dpoffload.so
-vendor/lib/libbatterylistener.so
-vendor/lib/libcomprcapture.so
-vendor/lib/libexthwplugin.so
-vendor/lib/libhdmiedid.so
-vendor/lib/libhfp.so
-vendor/lib/libspkrprot.so
-vendor/lib/libtinycompress.so
-
 # Audio firmware
+vendor/firmware/cs35l41-dsp1-diag-z.bin
+vendor/firmware/cs35l41-dsp1-diag-z.wmfw
+vendor/firmware/cs35l41-dsp1-diag.wmfw
 vendor/firmware/cs35l41-dsp1-spk-prot.bin
 vendor/firmware/cs35l41-dsp1-spk-prot.wmfw
 vendor/firmware/tas2557_uCDSP_aac.bin
@@ -38,10 +52,47 @@ vendor/firmware/tas2557_uCDSP_goer.bin
 # Audio hardware
 vendor/lib/hw/audio.primary.msmnile.so
 vendor/lib/hw/vendor.qti.hardware.audiohalext@1.0-impl.so
+vendor/lib/vndk/libxlog.so
+vendor/lib/liba2dpoffload.so
+vendor/lib/libaudio_log_utils.so
+vendor/lib/libaudioroute_ext.so
 vendor/lib/vendor.qti.hardware.audiohalext@1.0.so
 
 # Camera
 vendor/bin/remosaic_daemon
+vendor/lib64/camera/com.qti.sensor.imx481.so
+vendor/lib64/camera/com.qti.sensor.imx586.so
+vendor/lib64/camera/com.qti.sensor.s5k3m5.so
+vendor/lib64/camera/com.qti.sensor.s5k3t1.so
+vendor/lib64/camera/com.qti.sensormodule.f1a_imx481.bin
+vendor/lib64/camera/com.qti.sensormodule.f1a_imx586.bin
+vendor/lib64/camera/com.qti.sensormodule.f1a_s5k3m5.bin
+vendor/lib64/camera/com.qti.sensormodule.luxvisions_imx481.bin
+vendor/lib64/camera/com.qti.sensormodule.luxvisions_imx586.bin
+vendor/lib64/camera/com.qti.sensormodule.luxvisions_s5k3m5.bin
+vendor/lib64/camera/com.qti.sensormodule.ofilm_s5k3t1.bin
+vendor/lib64/camera/com.qti.sensormodule.semco_imx481.bin
+vendor/lib64/camera/com.qti.sensormodule.semco_imx586.bin
+vendor/lib64/camera/com.qti.sensormodule.semco_s5k3m5.bin
+vendor/lib64/camera/com.qti.sensormodule.sunny_largan_s5k3t1.bin
+vendor/lib64/camera/com.qti.sensormodule.sunny_s5k3t1.bin
+vendor/lib64/camera/com.qti.tuned.default.bin
+vendor/lib64/camera/com.qti.tuned.f1a_semco_imx481.bin
+vendor/lib64/camera/com.qti.tuned.f1a_semco_imx586.bin
+vendor/lib64/camera/com.qti.tuned.f1a_semco_s5k3m5.bin
+vendor/lib64/camera/com.qti.tuned.luvis_imx481.bin
+vendor/lib64/camera/com.qti.tuned.luvis_imx586.bin
+vendor/lib64/camera/com.qti.tuned.luvis_s5k3m5.bin
+vendor/lib64/camera/com.qti.tuned.ofilm_s5k3t1.bin
+vendor/lib64/camera/com.qti.tuned.semco_imx481.bin
+vendor/lib64/camera/com.qti.tuned.semco_imx586.bin
+vendor/lib64/camera/com.qti.tuned.semco_s5k3m5.bin
+vendor/lib64/camera/com.qti.tuned.sunny_largan_s5k3t1.bin
+vendor/lib64/camera/com.qti.tuned.sunny_s5k3t1.bin
+vendor/lib64/camera/fdconfigpreview.bin
+vendor/lib64/camera/fdconfigpreviewlite.bin
+vendor/lib64/camera/fdconfigvideo.bin
+vendor/lib64/camera/fdconfigvideolite.bin
 vendor/lib64/hw/camera.qcom.so
 vendor/lib64/hw/com.qti.chi.override.so
 vendor/lib64/libFaceGrade.so
@@ -56,31 +107,9 @@ vendor/lib64/libalCFR.so
 vendor/lib64/libalLDC.so
 vendor/lib64/libalhLDC.so
 vendor/lib64/libarcsat.so
-vendor/lib64/libarcsoft_beautyshot.so
-vendor/lib64/libarcsoft_bodyslim.so
-vendor/lib64/libarcsoft_distortion_correction.so
-vendor/lib64/libarcsoft_dualcam_image_optical_zoom.so
-vendor/lib64/libarcsoft_dualcam_optical_zoom_control.so
-vendor/lib64/libarcsoft_dualcam_refocus.so
-vendor/lib64/libarcsoft_dualcam_refocus_front.so
-vendor/lib64/libarcsoft_dualcam_refocus_rear_t.so
-vendor/lib64/libarcsoft_dualcam_refocus_rear_w.so
-vendor/lib64/libarcsoft_high_dynamic_range.so
-vendor/lib64/libarcsoft_low_light_hdr.so
-vendor/lib64/libarcsoft_portrait_lighting.so
-vendor/lib64/libarcsoft_portrait_lighting_c.so
-vendor/lib64/libarcsoft_preview_deflicker.so
-vendor/lib64/libarcsoft_supernight.so
 vendor/lib64/libc++_shared.so
 vendor/lib64/libcamera_nn_stub.so
 vendor/lib64/libcamera_scene.so
-vendor/lib64/libcamxfdalgov7.so
-vendor/lib64/libcamxfdalgov8.so
-vendor/lib64/libcamxfdengine.so
-vendor/lib64/libcamxlocalhistogramalgo.so
-vendor/lib64/libcamxstatscore.so
-vendor/lib64/libcamxswprocessalgo.so
-vendor/lib64/libcamxtintlessalgo.so
 vendor/lib64/libcom.qti.chinodeutils.so
 vendor/lib64/libft2vendor.so
 vendor/lib64/libmialgo_fs.so
@@ -98,11 +127,34 @@ vendor/lib64/libswregistrationalgo.so
 vendor/lib64/libtriplecam_optical_zoom_control.so
 vendor/lib64/libtriplecam_video_optical_zoom.so
 vendor/lib64/libvidhance.so
-vendor/lib64/vendor.qti.hardware.camera.device@1.0.so
-vendor/lib64/vendor.qti.hardware.camera.device@2.0.so
-vendor/lib64/vendor.qti.hardware.camera.device@3.5.so
 
-# Camera (components)
+# Camera (arcsoft)
+vendor/lib64/libarcsoft_beautyshot.so
+vendor/lib64/libarcsoft_bodyslim.so
+vendor/lib64/libarcsoft_distortion_correction.so
+vendor/lib64/libarcsoft_dualcam_image_optical_zoom.so
+vendor/lib64/libarcsoft_dualcam_optical_zoom_control.so
+vendor/lib64/libarcsoft_dualcam_refocus.so
+vendor/lib64/libarcsoft_dualcam_refocus_front.so
+vendor/lib64/libarcsoft_dualcam_refocus_rear_t.so
+vendor/lib64/libarcsoft_dualcam_refocus_rear_w.so
+vendor/lib64/libarcsoft_high_dynamic_range.so
+vendor/lib64/libarcsoft_low_light_hdr.so
+vendor/lib64/libarcsoft_portrait_lighting.so
+vendor/lib64/libarcsoft_portrait_lighting_c.so
+vendor/lib64/libarcsoft_preview_deflicker.so
+vendor/lib64/libarcsoft_supernight.so
+
+# Camera (camerax)
+vendor/lib64/libcamxfdalgov7.so
+vendor/lib64/libcamxfdalgov8.so
+vendor/lib64/libcamxfdengine.so
+vendor/lib64/libcamxlocalhistogramalgo.so
+vendor/lib64/libcamxstatscore.so
+vendor/lib64/libcamxswprocessalgo.so
+vendor/lib64/libcamxtintlessalgo.so
+
+# Camera components
 vendor/lib64/camera/components/etc/morpho_lowlight4.0.xml
 vendor/lib64/camera/components/etc/morpho_lowlight4.0_3hdr.xml
 vendor/lib64/camera/components/etc/morpho_lowlight4.0_adrc_high.xml
@@ -166,7 +218,7 @@ vendor/lib64/camera/components/com.xiaomi.node.mifragment.so
 vendor/lib64/camera/components/com.xiaomi.node.misegment.so
 vendor/lib64/camera/components/libdepthmapwrapper.so
 
-# Camera (configs)
+# Camera configs
 vendor/etc/camera/CFR_para_T.bin
 vendor/etc/camera/CFR_para_UW.bin
 vendor/etc/camera/CFR_para_W.bin
@@ -181,49 +233,23 @@ vendor/etc/camera/body_slim_ui9_params.config
 vendor/etc/camera/camxoverridesettings.txt
 vendor/etc/camera/eisoverridesettings.txt
 vendor/etc/camera/eyelineblush.cng
+vendor/etc/camera/fonts.xml
+vendor/etc/camera/hdr_ui9_params.config
 vendor/etc/camera/lf_facerank_model.bin
+vendor/etc/camera/mibokeh_855_opencl.bin
+vendor/etc/camera/mibokeh_855_parameter.bin
+vendor/etc/camera/model_back.dlc
+vendor/etc/camera/model_front.dlc
 vendor/etc/camera/sceneDetection.xml
 vendor/etc/camera/sdm_ys_32p_120_21_5_perturb50.bin
+vendor/etc/camera/vidhance_calibration
+vendor/etc/camera/visidon_clearshot_params_algoup.xml
+vendor/etc/camera/watermark_font_2300_3199.dat
 
-# Camera (firmware)
+# Camera firmware
 vendor/firmware/CAMERA_ICP.elf
 
-# Camera (sensors)
-vendor/lib64/camera/com.qti.sensor.imx481.so
-vendor/lib64/camera/com.qti.sensor.imx586.so
-vendor/lib64/camera/com.qti.sensor.s5k3m5.so
-vendor/lib64/camera/com.qti.sensor.s5k3t1.so
-vendor/lib64/camera/com.qti.sensormodule.f1a_imx481.bin
-vendor/lib64/camera/com.qti.sensormodule.f1a_imx586.bin
-vendor/lib64/camera/com.qti.sensormodule.f1a_s5k3m5.bin
-vendor/lib64/camera/com.qti.sensormodule.luxvisions_imx481.bin
-vendor/lib64/camera/com.qti.sensormodule.luxvisions_imx586.bin
-vendor/lib64/camera/com.qti.sensormodule.luxvisions_s5k3m5.bin
-vendor/lib64/camera/com.qti.sensormodule.ofilm_s5k3t1.bin
-vendor/lib64/camera/com.qti.sensormodule.semco_imx481.bin
-vendor/lib64/camera/com.qti.sensormodule.semco_imx586.bin
-vendor/lib64/camera/com.qti.sensormodule.semco_s5k3m5.bin
-vendor/lib64/camera/com.qti.sensormodule.sunny_largan_s5k3t1.bin
-vendor/lib64/camera/com.qti.sensormodule.sunny_s5k3t1.bin
-vendor/lib64/camera/com.qti.tuned.default.bin
-vendor/lib64/camera/com.qti.tuned.f1a_semco_imx481.bin
-vendor/lib64/camera/com.qti.tuned.f1a_semco_imx586.bin
-vendor/lib64/camera/com.qti.tuned.f1a_semco_s5k3m5.bin
-vendor/lib64/camera/com.qti.tuned.luvis_imx481.bin
-vendor/lib64/camera/com.qti.tuned.luvis_imx586.bin
-vendor/lib64/camera/com.qti.tuned.luvis_s5k3m5.bin
-vendor/lib64/camera/com.qti.tuned.ofilm_s5k3t1.bin
-vendor/lib64/camera/com.qti.tuned.semco_imx481.bin
-vendor/lib64/camera/com.qti.tuned.semco_imx586.bin
-vendor/lib64/camera/com.qti.tuned.semco_s5k3m5.bin
-vendor/lib64/camera/com.qti.tuned.sunny_largan_s5k3t1.bin
-vendor/lib64/camera/com.qti.tuned.sunny_s5k3t1.bin
-vendor/lib64/camera/fdconfigpreview.bin
-vendor/lib64/camera/fdconfigpreviewlite.bin
-vendor/lib64/camera/fdconfigvideo.bin
-vendor/lib64/camera/fdconfigvideolite.bin
-
-# Display calibration
+# Display
 vendor/etc/qdcm_calib_data_samsung_ea8076_fhd_cmd_dsi_panel.xml
 
 # Fingerprint
@@ -231,8 +257,6 @@ vendor/lib64/hw/fingerprint.goodix_fod.so:vendor/lib64/hw/fingerprint.goodix_fod
 vendor/lib64/libarm_proxy_skel.so
 vendor/lib64/libgf_hal.so
 vendor/lib64/libhvx_proxy_stub.so
-vendor/lib64/vendor.goodix.hardware.biometrics.fingerprint@2.1.so
-vendor/lib64/vendor.xiaomi.hardware.fingerprintextension@1.0.so
 
 # IPA firmware
 vendor/etc/init/ipa_fws.rc
@@ -257,7 +281,6 @@ vendor/etc/init/init.vendor.sensors.rc
 vendor/etc/init/vendor.sensors.qti.rc
 vendor/etc/init/vendor.sensors.sscrpcd.rc
 vendor/etc/sensors/hals.conf
-vendor/etc/elliptic_sensor.xml
 vendor/lib64/libnotifyaudiohal.so
 vendor/lib64/libsensorslog.so
 vendor/lib64/libsns_fastRPC_util.so
@@ -315,6 +338,7 @@ vendor/etc/sensors/config/sns_tilt_to_wake.json
 vendor/etc/sensors/config/tcs3701.json
 vendor/etc/sensors/config/vl53l1_tof_0.json
 vendor/etc/sensors/sns_reg_config
+vendor/etc/elliptic_sensor.xml
 
 # Thermal engine
 vendor/etc/thermal-arvr.conf
