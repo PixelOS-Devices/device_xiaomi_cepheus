@@ -19,7 +19,7 @@ TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):init_xiaomi_cepheus
 TARGET_RECOVERY_DEVICE_MODULES := init_xiaomi_cepheus
 
 # Kernel
-TARGET_KERNEL_CONFIG := vendor/cepheus_defconfig
+TARGET_KERNEL_CONFIG += vendor/xiaomi/cepheus.config
 
 # Inherit from the proprietary version
 include vendor/xiaomi/cepheus/BoardConfigVendor.mk
