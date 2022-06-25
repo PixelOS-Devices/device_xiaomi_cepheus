@@ -19,7 +19,7 @@ static const variant_info_t cepheus_info = {
     .model = "MI 9",
     .build_fingerprint = "Xiaomi/cepheus/cepheus:11/RKQ1.200826.002/V12.5.1.0.RFAMIXM:user/release-keys",
 
-    .nfc = true,
+    .nfc = NFC_TYPE_NFC_ESE,
 };
 
 static const std::vector<variant_info_t> variants = {
