@@ -131,6 +131,7 @@ bluetooth.profile.sap.server.enabled?=true
 
 # Camera
 camera.disable_zsl_mode=true
+persist.vendor.camera.perflock.enable=0
 
 # Charger
 ro.charger.enable_suspend=true
