@@ -11,6 +11,7 @@ persist.vendor.camera.enableNCSService=TRUE
 persist.vendor.camera.enableTOFInterface=TRUE
 persist.vendor.camera.mfnrframenum=8
 persist.vendor.camera.multicam=TRUE
+log.tag.CHIUSECASE=ERROR
 
 # Dex2oat
 dalvik.vm.systemuicompilerfilter=speed
