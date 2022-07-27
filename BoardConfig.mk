@@ -23,3 +23,6 @@ TARGET_KERNEL_CONFIG += vendor/xiaomi/cepheus.config
 
 # Inherit from the proprietary version
 include vendor/xiaomi/cepheus/BoardConfigVendor.mk
+
+# SELINUX
+SELINUX_IGNORE_NEVERALLOWS := true
