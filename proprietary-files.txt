@@ -96,6 +96,8 @@ vendor/lib64/camera/fdconfigvideolite.bin
 vendor/lib64/hw/camera.qcom.so
 vendor/lib64/hw/com.qti.chi.override.so
 vendor/lib64/libFaceGrade.so
+vendor/lib64/libMegviiFacepp-0.5.2.so
+vendor/lib64/libmegface.so
 vendor/lib64/libHalSuperSensorServer.so
 vendor/lib64/libSuperSensor.so
 vendor/lib64/libSuperSensorCPU.so
