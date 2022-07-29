@@ -253,15 +253,6 @@
       "ResetOnInit": true
     },
     {
-      "Name": "PMQoSCpuDmaLatency",
-      "Path": "/dev/cpu_dma_latency",
-      "Values": [
-        "2c",
-        "64"
-      ],
-      "HoldFd": true
-    },
-    {
       "Name": "UfsClkGateEnable",
       "Path": "/sys/devices/platform/soc/1d84000.ufshc/clkgate_enable",
       "Values": [
@@ -510,12 +501,6 @@
       "Node": "GPUMaxFreq",
       "Duration": 0,
       "Value": "675000000"
-    },
-    {
-      "PowerHint": "ML_ACC",
-      "Node": "PMQoSCpuDmaLatency",
-      "Duration": 2000,
-      "Value": "2c"
     },
     {
       "PowerHint": "DISPLAY_UPDATE_IMMINENT",
