@@ -217,7 +217,7 @@ debug.stagefright.omx_default_rank=0
 ro.vendor.extension_library=libqti-perfd-client.so
 
 # Property to enable/disable PASR
-vendor.power.pasr.enabled=true
+vendor.power.pasr.enabled=false
 
 # QC framework value-adds
 ro.vendor.qti.va_aosp.support=1
