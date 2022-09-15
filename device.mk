@@ -377,7 +377,7 @@ PRODUCT_COPY_FILES += \
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-pe
+    $(LOCAL_PATH)/overlay-aosp
 
 # Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
