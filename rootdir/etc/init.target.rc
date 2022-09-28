@@ -73,10 +73,6 @@ on early-fs
 on early-fs
     start vold
 
-    # set default schedTune value for camera-daemon
-    write /dev/stune/camera-daemon/schedtune.prefer_idle 1
-    write /dev/stune/camera-daemon/schedtune.boost 0
-
 on fs
     start hwservicemanager
     mount_all /vendor/etc/fstab.qcom --early
