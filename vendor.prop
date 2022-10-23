@@ -138,9 +138,9 @@ persist.vendor.dpmhalservice.enable=1
 # Display
 debug.cpurend.vsync=false
 debug.egl.hw=0
+debug.sf.auto_latch_unsignaled=1
 debug.sf.enable_hwc_vds=0
 debug.sf.hw=1
-debug.sf.latch_unsignaled=0
 debug.sf.disable_client_composition_cache=1
 ro.hardware.egl=adreno
 ro.hardware.vulkan=adreno
