@@ -280,7 +280,7 @@ PRODUCT_PACKAGES += \
 
 # Lights
 PRODUCT_PACKAGES += \
-    android.hardware.lights-service.cepheus
+    android.hardware.light-service.xiaomi
 
 # LiveDisplay
 PRODUCT_PACKAGES += \
