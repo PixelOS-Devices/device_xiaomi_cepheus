@@ -1,6 +1,8 @@
 Copyright &copy; 2020 DerpFest
 
-Copyright &copy; 2020-2021 PixelExperience
+Copyright &copy; 2020-2022 PixelExperience
+
+Copyright &copy; 2022 PixelOS
 
 Device configuration for Xiaomi Mi 9
 =========================================
