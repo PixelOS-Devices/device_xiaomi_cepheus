@@ -1,18 +1,40 @@
 dontaudit {
   bootanim
+  hal_audio_default
   hal_graphics_allocator_default
+  hal_graphics_composer_default
   hal_sensors_default
+  hal_tetheroffload_default
   platform_app
+  rild
   system_app
   surfaceflinger
+  vendor_adpl
+  vendor_cnd
+  vendor_dpmd
+  vendor_hal_imsrtp
+  vendor_ims_service
+  vendor_netmgrd
+  vendor_qti
   vendor_sensors
+  vendor_wcnss_service
 } sysfs_msm_subsys:dir search;
+
+dontaudit {
+  rild
+  vendor_hal_capabilityconfigstore_qti_default
+  vendor_hal_gnss_qti
+} vendor_pd_locater_dbg_prop:file r_file_perms;
 
 # Ignore harmless QCOM denials
 dontaudit gmscore_app {
   bt_firmware_file
   firmware_file
 }:filesystem getattr;
+
+dontaudit hal_wifi_default persist_vendor_debug_wifi_prop:file r_file_perms;
+dontaudit kernel self:qipcrtr_socket create;
+dontaudit vendor_hal_capabilityconfigstore_qti_default vendor_cap_configstore_dbg_prop:file r_file_perms;
 
 # Ignore in user builds
 dontaudit traced_probes debugfs_tracing_debug:file rw_file_perms;
