@@ -1,8 +1,27 @@
+# Display
+genfscon sysfs /devices/platform/soc/2c00000.qcom,kgsl-3d0                                          u:object_r:sysfs_msm_subsys:s0
+genfscon sysfs /devices/platform/soc/ae00000.qcom,mdss_mdp/idle_state                               u:object_r:vendor_sysfs_graphics:s0
+genfscon sysfs /devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/sde-crtc-0/early_wakeup        u:object_r:sysfs_msm_subsys:s0
+genfscon sysfs /devices/platform/soc/soc:qcom,cpu-cpu-llcc-bw                                       u:object_r:sysfs_msm_subsys:s0
+genfscon sysfs /devices/platform/soc/soc:qcom,cpu-llcc-ddr-bw                                       u:object_r:sysfs_msm_subsys:s0
+genfscon sysfs /devices/platform/soc/soc:qcom,cpu0-cpu-l3-lat                                       u:object_r:sysfs_msm_subsys:s0
+genfscon sysfs /devices/platform/soc/soc:qcom,cpu6-cpu-l3-lat                                       u:object_r:sysfs_msm_subsys:s0
+genfscon sysfs /devices/platform/soc/soc:qcom,dsi-display                                           u:object_r:vendor_sysfs_graphics:s0
+genfscon sysfs /devices/platform/soc/soc:qcom,gpubw                                                 u:object_r:sysfs_msm_subsys:s0
+genfscon sysfs /devices/platform/soc/soc:qcom,gpubw/devfreq                                         u:object_r:sysfs_msm_subsys:s0
+
 # Doze
 genfscon sysfs /devices/platform/soc/soc:qcom,dsi-display-primary/doze_mode                                                                                         u:object_r:vendor_sysfs_graphics:s0
 
 # FlickerFree
 genfscon sysfs /devices/platform/soc/soc:qcom,dsi-display-primary/msm_fb_ea_enable                                                                                       u:object_r:vendor_sysfs_graphics:s0
+
+# Health
+genfscon sysfs /class/power_supply/battery/capacity                                                 u:object_r:sysfs_battery_supply:s0
+genfscon sysfs /devices/platform/soc/884000.i2c/i2c-3/3-0066/power_supply/bq2597x-standalone        u:object_r:sysfs_battery_supply:s0
+genfscon sysfs /devices/platform/soc/884000.i2c/i2c-5/5-0066/power_supply/bq2597x-standalone        u:object_r:sysfs_battery_supply:s0
+genfscon sysfs /devices/platform/soc/890000.i2c/i2c-0/0-0066/power_supply/bq2597x-standalone        u:object_r:sysfs_battery_supply:s0
+genfscon sysfs /devices/platform/soc/soc:maxim_ds28e16/power_supply/batt_verify                     u:object_r:sysfs_battery_supply:s0
 
 # HBM
 genfscon sysfs /devices/platform/soc/soc:qcom,dsi-display-primary/hbm                                                                                               u:object_r:vendor_sysfs_graphics:s0
@@ -12,8 +31,22 @@ genfscon sysfs /kernel/boot_cdsp/boot                                           
 genfscon sysfs /kernel/boot_slpi/boot                                                                                                                               u:object_r:sysfs_msm_boot:s0
 genfscon sysfs /bus/platform/devices/1d84000.ufshc/clkscale_enable                                                                                                  u:object_r:sysfs_scsi_devices_0000:s0
 
-# Lights
+# kmsg
+genfscon proc /last_kmsg                                                        u:object_r:proc_last_kmsg:s0
+
+# LED
 genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-05/c440000.qcom,spmi:qcom,pm8150l@5:qcom,leds@d000/leds/white                                   u:object_r:vendor_sysfs_graphics:s0
+genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-05/c440000.qcom,spmi:qcom,pm6150l@5:qcom,leds@d300/leds/flashlight/brightness               u:object_r:sysfs_leds:s0
+genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-05/c440000.qcom,spmi:qcom,pm6150l@5:qcom,leds@d300/leds/led:torch_0/brightness              u:object_r:sysfs_leds:s0
+genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-05/c440000.qcom,spmi:qcom,pm6150l@5:qcom,leds@d300/leds/led:torch_1/brightness              u:object_r:sysfs_leds:s0
+genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-05/c440000.qcom,spmi:qcom,pm6150l@5:qcom,leds@d300/leds/led:switch_0/brightness             u:object_r:sysfs_leds:s0
+genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-05/c440000.qcom,spmi:qcom,pm6150l@5:qcom,leds@d300/leds/led:switch_1/brightness             u:object_r:sysfs_leds:s0
+
+# Touchpanel
+genfscon sysfs /touchpanel                                                      u:object_r:sysfs_touchpanel:s0
+
+# UFS
+genfscon sysfs /devices/platform/soc/1d84000.ufshc/clkgate_enable               u:object_r:vendor_sysfs_scsi_host:s0
 
 # Wakeup source stats
 genfscon sysfs /devices/0306_02.01.00/wakeup                                                                                                       u:object_r:sysfs_wakeup:s0
