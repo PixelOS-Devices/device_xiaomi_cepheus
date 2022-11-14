@@ -1,6 +1,8 @@
 # Allow vendor_init to set vendor_persist_camera_prop
 set_prop(vendor_init, vendor_camera_prop)
-
+set_prop(vendor_init, vendor_alarm_boot_prop)
+set_prop(vendor_init, vendor_power_prop)
+set_prop(vendor_init, vendor_video_prop)
 set_prop(vendor_init, vendor_power_prop)
 
 # Allow vendor_init to write to vm, clk debugfs and energy aware sysfs
@@ -23,3 +25,7 @@ allow vendor_qti_init_shell {
 
 # Allow vendor_init to change watermark_scale_factor
 allow vendor_init proc_watermark_scale_factor:file w_file_perms;
+
+allow vendor_init block_device:lnk_file { setattr };
+allow vendor_init input_device:chr_file { create setattr unlink rw_file_perms };
+allow vendor_init vendor_camera_prop:property_service set;
