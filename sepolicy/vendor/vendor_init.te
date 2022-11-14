@@ -4,6 +4,7 @@ set_prop(vendor_init, vendor_alarm_boot_prop)
 set_prop(vendor_init, vendor_power_prop)
 set_prop(vendor_init, vendor_video_prop)
 set_prop(vendor_init, vendor_power_prop)
+set_prop(vendor_init, vendor_ssr_prop)
 
 # Allow vendor_init to write to vm, clk debugfs and energy aware sysfs
 allow vendor_init {
