@@ -14,6 +14,7 @@ type camera_persist_file, file_type, vendor_persist_type;
 type per_boot_file, file_type, data_file_type, core_data_file_type;
 
 # Define file types used by pixel powerhal and powerstats
+type sysfs_kgsl, sysfs_type, fs_type;
 type sysfs_iio_devices, fs_type, sysfs_type;
 type sysfs_scsi_devices_0000, sysfs_type, fs_type;
 type sysfs_msm_wlan, sysfs_type, fs_type;
