@@ -99,6 +99,10 @@ vendor.audio_hal.period_size=192
 
 # Bluetooth
 bluetooth.device.class_of_device=90,2,12
+bluetooth.hardware.power.idle_cur_ma=36
+bluetooth.hardware.power.operating_voltage_mv=3700
+bluetooth.hardware.power.rx_cur_ma=20
+bluetooth.hardware.power.tx_cur_ma=3
 persist.bluetooth.a2dp_offload.cap=sbc-aac-aptx-aptxhd-ldac
 persist.bluetooth.a2dp_offload.disabled=false
 persist.vendor.bt.aac_frm_ctl.enabled=false
