@@ -2,9 +2,6 @@
 persist.bluetooth.a2dp_aac.vbr_supported=true
 persist.vendor.btstack.enable.twsplussho=true
 
-# Blur
-ro.sf.blurs_are_expensive=1
-
 # Camera
 vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera,org.lineageos.snap
 persist.camera.sat.fallback.dist.d=10
