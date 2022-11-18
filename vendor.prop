@@ -97,6 +97,11 @@ vendor.audio_hal.in_period_size=144
 vendor.audio_hal.period_multiplier=3
 vendor.audio_hal.period_size=192
 
+# Adaptive Suspend
+suspend.short_suspend_threshold_millis=2000
+suspend.short_suspend_backoff_enabled=true
+suspend.max_sleep_time_millis=40000
+
 # Bluetooth
 bluetooth.device.default_name=Xiaomi Mi 9
 bluetooth.device.class_of_device=90,2,12
