@@ -596,4 +596,7 @@
     <!-- Whether or not wcg (wide color gamut) should be enabled on this device,
           we only enabled it while the device has ability of mixed color spaces composition -->
     <bool name="config_enableWcgMode">true</bool>
+
+    <!-- Type of the udfps long press sensor. Empty if long press is not supported. -->
+    <string name="config_dozeUdfpsLongPressSensorType" translatable="false">dummy.sensor.udfps</string>
 </resources>
