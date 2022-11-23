@@ -39,6 +39,10 @@ on early-init
     # Change ownership of sysfs power control node
     chown system graphics /sys/class/drm/card0/device/power/control
 
+    # Change ownership of sw_sync node
+    chown system graphics /sys/kernel/debug/sync/sw_sync
+    chmod 0666 /sys/kernel/debug/sync/sw_sync
+
     # Disable UFS clock scaling
     write /sys/bus/platform/devices/1d84000.ufshc/clkscale_enable 0
 
@@ -47,6 +51,17 @@ on early-init
 
     # Disable UFS clock gating
     write /sys/bus/platform/devices/1d84000.ufshc/clkgate_enable 0
+
+    # SSR setup
+    write /sys/bus/msm_subsys/devices/subsys0/restart_level "related"
+    write /sys/bus/msm_subsys/devices/subsys1/restart_level "related"
+    write /sys/bus/msm_subsys/devices/subsys2/restart_level "related"
+    write /sys/bus/msm_subsys/devices/subsys3/restart_level "related"
+    write /sys/bus/msm_subsys/devices/subsys4/restart_level "related"
+    write /sys/bus/msm_subsys/devices/subsys5/restart_level "related"
+    write /sys/bus/msm_subsys/devices/subsys6/restart_level "related"
+    write /sys/bus/msm_subsys/devices/subsys7/restart_level "related"
+    write /sys/bus/msm_subsys/devices/subsys8/restart_level "related"
 
 on init
     # Create cgroup mount point for memory
@@ -58,6 +73,9 @@ on init
 
     # Loading kernel modules in background
     start insmod_sh
+
+on post-fs
+    chmod 0755 /sys/kernel/debug/tracing
 
 on early-boot
     # Wait for insmod_sh to finish all modules
@@ -71,17 +89,6 @@ on early-boot
 
     chown system graphics /sys/devices/virtual/hdcp/msm_hdcp/min_level_change
     chmod 0660 /sys/devices/virtual/hdcp/msm_hdcp/min_level_change
-
-    # SSR setup
-    write /sys/bus/msm_subsys/devices/subsys0/restart_level "related"
-    write /sys/bus/msm_subsys/devices/subsys1/restart_level "related"
-    write /sys/bus/msm_subsys/devices/subsys2/restart_level "related"
-    write /sys/bus/msm_subsys/devices/subsys3/restart_level "related"
-    write /sys/bus/msm_subsys/devices/subsys4/restart_level "related"
-    write /sys/bus/msm_subsys/devices/subsys5/restart_level "related"
-    write /sys/bus/msm_subsys/devices/subsys6/restart_level "related"
-    write /sys/bus/msm_subsys/devices/subsys7/restart_level "related"
-    write /sys/bus/msm_subsys/devices/subsys8/restart_level "related"
 
     # Allow system to read measured screen FPS
     chown system graphics /sys/class/drm/card0/sde-crtc-0/measured_fps
@@ -105,6 +112,7 @@ on boot
     # socket files used for internal IPC within QCRIL
     # modules
     mkdir /dev/socket/qmux_radio 2770 radio radio
+    chmod 2770 /dev/socket/qmux_radio
 
     # Create NETMGR daemon socket area
     mkdir /dev/socket/netmgr 0750 radio radio
@@ -138,6 +146,12 @@ on boot
     chmod 0666 /sys/class/power_supply/battery/charging_enabled
     chown system system /sys/class/power_supply/battery/input_suspend
     chmod 0666 /sys/class/power_supply/battery/input_suspend
+
+    # Start qcrild and data services
+    start vendor.qcrild
+    start vendor.qcrild2
+    start vendor.dataqti
+    start vendor.dataadpl
 
 on post-fs-data
     # set RLIMIT_MEMLOCK to 64MB
@@ -178,6 +192,7 @@ on post-fs-data
 
     # Create the directories used by CnE subsystem
     mkdir /data/vendor/connectivity 0771 radio radio
+    chown radio radio /data/vendor/connectivity
 
     # Create directory used by audio subsystem
     mkdir /data/vendor/audio 0770 audio audio
@@ -214,18 +229,24 @@ on post-fs-data
     copy /vendor/radio/qcril_database/qcril.db /data/vendor/radio/qcril_prebuilt.db
     chown radio radio /data/vendor/radio/qcril_prebuilt.db
     chmod 0660 /data/vendor/radio/qcril_prebuilt.db
+    copy /vendor/radio/qcril_database/qcrilNr.db /data/vendor/radio/qcrilNr_prebuilt.db
+    copy /vendor/etc/qcril_database/qcrilNr.db /data/vendor/radio/qcrilNr_prebuilt.db
+    chown radio radio /data/vendor/radio/qcrilNr_prebuilt.db
+    chmod 0660 /data/vendor/radio/qcrilNr_prebuilt.db
+
+    # File flags for prebuilt ril db file
+    write /data/vendor/radio/prebuilt_db_support 1
+    chown radio radio /data/vendor/radio/prebuilt_db_support
+    chmod 0400 /data/vendor/radio/prebuilt_db_support
+    write /data/vendor/radio/db_check_done 0
+    chown radio radio /data/vendor/radio/db_check_done
+    chmod 0660 /data/vendor/radio/db_check_done
 
     # Create vpp directory
     mkdir /data/vendor/vpp 0770 media media
 
     # Make MTU adjusting
     write /proc/sys/net/ipv4/tcp_mtu_probing 1
-
-    # Start qcrild and data services
-    start vendor.qcrild
-    start vendor.qcrild2
-    start vendor.dataqti
-    start vendor.dataadpl
 
     setprop vold.post_fs_data_done 1
 
@@ -236,16 +257,16 @@ on property:sys.boot_completed=1
     # Enable UFS clock scaling back
     write /sys/bus/platform/devices/1d84000.ufshc/clkscale_enable 1
 
-    #Enable UFS auto_hibern8 back
+    # Enable UFS auto_hibern8 back
     write /sys/bus/platform/devices/1d84000.ufshc/auto_hibern8 5000
 
-    #Enable UFS clock gating back
+    # Enable UFS clock gating back
     write /sys/bus/platform/devices/1d84000.ufshc/clkgate_enable 1
 
     chown media audio /sys/kernel/wdsp0/boot
 
-    start affinity
-
+    # Reinit lmkd to reconfigure lmkd properties
+    setprop lmkd.reinit 1
     setprop vendor.setup.power 1
 
 service vendor.qrtr-ns /vendor/bin/qrtr-ns -f
@@ -350,6 +371,13 @@ on property:init.svc.vendor.charger=running
     write /sys/devices/system/cpu/cpu6/online 0
     write /sys/devices/system/cpu/cpu7/online 0
 
+# Set vendor-ril lib path based on Meta version
+on property:vendor.rild.libpath=*
+    setprop rild.libpath ${vendor.rild.libpath}
+
+on property:ro.vendor.radio.noril=*
+    setprop ro.radio.noril ${ro.vendor.radio.noril}
+
 service vendor.hwcomposer-2-4 /vendor/bin/hw/android.hardware.graphics.composer@2.4-service
     override
     class hal animation
@@ -359,3 +387,22 @@ service vendor.hwcomposer-2-4 /vendor/bin/hw/android.hardware.graphics.composer@
     onrestart restart surfaceflinger
     task_profiles ServiceCapacityLow
     socket pps stream 0660 system system
+
+service vendor.ril-daemon2 /vendor/bin/hw/rild -c 2
+    class main
+    user radio
+    disabled
+    group radio cache inet misc audio sdcard_r sdcard_rw diag oem_2901 log
+    capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
+
+service vendor.ril-daemon3 /vendor/bin/hw/rild -c 3
+    class main
+    user radio
+    disabled
+    group radio cache inet misc audio sdcard_r sdcard_rw diag oem_2901 log
+    capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
+
+service vendor.atfwd /vendor/bin/ATFWD-daemon
+    class late_start
+    user system
+    group system radio

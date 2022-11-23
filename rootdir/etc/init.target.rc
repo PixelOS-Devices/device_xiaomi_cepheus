@@ -36,9 +36,6 @@ on init
     wait /dev/block/platform/soc/1d84000.ufshc
     symlink /dev/block/platform/soc/1d84000.ufshc /dev/block/bootdevice
 
-on early-fs
-    start vold
-
     # Boot time fs tuning
     write /sys/block/sda/queue/iostats 0
     write /sys/block/sda/queue/scheduler cfq
@@ -73,6 +70,14 @@ on early-fs
 on early-fs
     start vold
 
+    # Create a cpuset for camera-specific processes
+    mkdir /dev/cpuset/camera-daemon
+    write /dev/cpuset/camera-daemon/cpus 0-7
+    write /dev/cpuset/camera-daemon/mems 0
+    chown system system /dev/cpuset/camera-daemon
+    chown system system /dev/cpuset/camera-daemon/tasks
+    chmod 0664 /dev/cpuset/camera-daemon/tasks
+
 on fs
     start hwservicemanager
     mount_all /vendor/etc/fstab.qcom --early
@@ -83,15 +88,6 @@ on fs
     restorecon_recursive /mnt/vendor/persist
 
 on late-fs
-    start surfaceflinger
-    start bootanim
-    start vendor.hwcomposer-2-2
-    start vendor.configstore-hal
-    start vendor.qti.hardware.display.allocator
-    start vendor.light-hal-2-0
-
-    wait_for_prop hwservicemanager.ready true
-    exec_start wait_for_keymaster
     mount_all /vendor/etc/fstab.qcom --late
 
 on post-fs-data
@@ -110,6 +106,24 @@ on post-fs-data
     chmod 0644 /dev/elliptic1
 
 on boot
+    # For cpusets initialize for Silver Only first and then Silver + Gold
+    # Silver Only configuration cannot work with 0-7
+    chown system system /sys/kernel/hbtp/display_pwr
+    chown system system /sys/kernel/qvr_external_sensor/fd
+    start rmt_storage
+    start rfs_access
+    write /dev/cpuset/top-app/cpus 0-3
+    write /dev/cpuset/audio-app/cpus 1-2
+    write /dev/cpuset/foreground/cpus 0-3
+    write /dev/cpuset/foreground/boost/cpus 0-3
+    write /dev/cpuset/background/cpus 0-3
+    write /dev/cpuset/system-background/cpus 0-3
+    write /dev/cpuset/top-app/cpus 0-7
+    write /dev/cpuset/foreground/cpus 0-7
+    write /dev/cpuset/foreground/boost/cpus 0-7
+    write /dev/cpuset/background/cpus 0-7
+    write /dev/cpuset/system-background/cpus 0-7
+
     start vendor.rmt_storage
     start vendor.rfs_access
 
@@ -135,10 +149,6 @@ on property:sys.boot_completed=1
     write /dev/sys/fs/by-name/userdata/data_io_flag 8
     write /dev/sys/fs/by-name/userdata/node_io_flag 8
     write /sys/block/sde/queue/nr_requests 128
-
-    # First setup runtime cpusets only for silver cpus
-    write /dev/cpuset/top-app/cpus 0-3
-    write /dev/cpuset/foreground/cpus 0-3
 
     # Setup cpu.shares to throttle background groups (bg ~ 5% sysbg ~ 10%)
     write /dev/cpuctl/background/cpu.shares 1024
