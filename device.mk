@@ -471,7 +471,11 @@ PRODUCT_PACKAGES += \
 # Shim
 PRODUCT_PACKAGES += \
     libwatermark_shim
-    
+
+# QDCM
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/qdcm/,$(TARGET_COPY_OUT_VENDOR)/etc)
+
 # Shipping API
 PRODUCT_SHIPPING_API_LEVEL := 28
 
