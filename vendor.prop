@@ -191,6 +191,11 @@ ro.frp.pst=/dev/block/bootdevice/by-name/frp
 # Gatekeeper
 vendor.gatekeeper.disable_spu=true
 
+# IFAAService
+persist.vendor.sys.fp.udfps.location.X_Y=455,1920
+persist.vendor.sys.fp.udfps.size.width_height=173,173
+ro.hardware.fp.udfps=true
+
 # IMS
 persist.dbg.volte_avail_ovr=1
 persist.dbg.vt_avail_ovr=1
@@ -204,8 +209,7 @@ persist.vendor.ims.disableQXDMLogs=1
 ro.vendor.qti.va_aosp.support=1
 ro.vendor.qti.va_odm.support=1
 
-#Media
-media.settings.xml=/vendor/etc/media_profiles_vendor.xml
+# Media
 debug.stagefright.ccodec=1
 debug.stagefright.omx_default_rank=0
 
@@ -232,9 +236,6 @@ persist.vendor.radio.report_codec=1
 persist.vendor.sensors.enable.mag_filter=true
 persist.vendor.uspsensor=default
 
-# Zygote preforking
-persist.device_config.runtime_native.usap_pool_enabled=true
-
 # SoC
 ro.soc.manufacturer=Qualcomm
 ro.soc.model=SM8150
@@ -255,11 +256,6 @@ vendor.usb.use_gadget_hal=0
 
 # WiFi
 wifi.aware.interface=wifi-aware0
-
-# IFAAService
-persist.vendor.sys.fp.udfps.location.X_Y=455,1920
-persist.vendor.sys.fp.udfps.size.width_height=173,173
-ro.hardware.fp.udfps=true
 
 # Zygote
 zygote.critical_window.minute=10
