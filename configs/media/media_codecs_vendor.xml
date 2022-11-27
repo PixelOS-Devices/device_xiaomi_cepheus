@@ -110,6 +110,7 @@ Only the three quirks included above are recognized at this point:
  |             | 4096    2304    60      220     2211840             |
  |             | 7680    4320    30      220     3888000             |
  |             | 8192    4320    24      220     3317760             |
+ | vc1         | 1920    1088    30      20      244800      244800  |
  | h263-sw     | 864     480     30      16       48600       48600  |
  | mpeg2       | 1920    1088    30      40      244800      244800  |
  |_____________|_____________________________________________________|
@@ -164,6 +165,7 @@ Only the three quirks included above are recognized at this point:
 
 <MediaCodecs>
     <Include href="media_codecs_google_audio.xml" />
+    <Include href="media_codecs_vendor_audio.xml" />
     <Include href="media_codecs_google_telephony.xml" />
     <Settings>
         <Setting name="max-video-encoder-input-buffers" value="11" />
@@ -232,6 +234,22 @@ Only the three quirks included above are recognized at this point:
             <Limit name="concurrent-instances" max="16" />
             <Limit name="quality" range="0-100" default="80" />
             <Limit name="performance-point-512x512" value="480" />
+            <Feature name="bitrate-modes" value="CQ" />
+        </MediaCodec>
+        <MediaCodec name="OMX.qcom.video.encoder.heic" type="image/vnd.android.heic" >
+            <Quirk name="requires-allocate-on-input-ports" />
+            <Quirk name="requires-allocate-on-output-ports" />
+            <Quirk name="requires-loaded-to-idle-after-allocation" />
+            <Limit name="size" min="512x512" max="8192x8192" />
+            <Limit name="frame-rate" range="1-20" />
+            <Limit name="concurrent-instances" max="6" />
+            <Limit name="quality" range="0-100" default="80" />
+            <Limit name="performance-point-8192x4320" value="3" />
+            <Limit name="performance-point-4096x2304" value="12" />
+            <Limit name="performance-point-1920x1080" value="40" />
+            <Limit name="performance-point-1920x1080" value="30" />
+            <Limit name="performance-point-1280x720" value="80" />
+            <Limit name="performance-point-1280x720" value="60" />
             <Feature name="bitrate-modes" value="CQ" />
         </MediaCodec>
         <!-- Video Software -->
@@ -425,19 +443,43 @@ Only the three quirks included above are recognized at this point:
              <Limit name="concurrent-instances" max="16" />
              <Limit name="performance-point-720x480" value="30" />
         </MediaCodec>
-        <MediaCodec name="OMX.qti.video.decoder.mpeg4sw" type="video/mp4v-es">
+        <MediaCodec name="OMX.qti.video.decoder.mpeg4sw">
              <Quirk name="requires-allocate-on-input-ports" />
              <Quirk name="requires-allocate-on-output-ports" />
-             <Limit name="size" min="96x96" max="1920x1088" />
-             <Limit name="alignment" value="2x2" />
-             <Limit name="block-size" value="16x16" />
-             <Limit name="blocks-per-second" min="36" max="244800" />
-             <Limit name="bitrate" range="1-40000000" />
-             <Limit name="frame-rate" range="1-30" />
-             <Limit name="concurrent-instances" max="16" />
-             <Limit name="performance-point-1920x1080" value="30" />
+             <Type name="video/mp4v-es">
+                <Limit name="size" min="96x96" max="1920x1088" />
+                <Limit name="alignment" value="2x2" />
+                <Limit name="block-size" value="16x16" />
+                <Limit name="blocks-per-second" min="36" max="244800" />
+                <Limit name="bitrate" range="1-40000000" />
+                <Limit name="frame-rate" range="1-30" />
+                <Limit name="concurrent-instances" max="16" />
+                <Limit name="performance-point-1920x1080" value="30" />
+             </Type>
+             <Type name="video/mp4v-esdp">
+                <Limit name="size" min="96x96" max="1920x1088" />
+                <Limit name="alignment" value="2x2" />
+                <Limit name="block-size" value="16x16" />
+                <Limit name="blocks-per-second" min="36" max="244800" />
+                <Limit name="bitrate" range="1-40000000" />
+                <Limit name="frame-rate" range="1-30" />
+                <Limit name="concurrent-instances" max="16" />
+                <Limit name="performance-point-1920x1080" value="30" />
+             </Type>
         </MediaCodec>
-        <MediaCodec name="OMX.google.opus.decoder" type="audio/opus" update="true" rank="100"/>
+        <MediaCodec name="OMX.qti.video.decoder.vc1sw" type="video/x-ms-wmv" >
+            <Quirk name="requires-allocate-on-input-ports" />
+            <Quirk name="requires-allocate-on-output-ports" />
+            <Limit name="size" min="96x96" max="1920x1088" />
+            <Limit name="alignment" value="2x2" />
+            <Limit name="block-size" value="16x16" />
+            <Limit name="blocks-per-second" min="36" max="244800" />
+            <Limit name="bitrate" range="1-20000000" />
+            <Limit name="frame-rate" range="1-30" />
+            <Feature name="adaptive-playback" />
+            <Limit name="concurrent-instances" max="16" />
+            <Limit name="performance-point-1920x1080" value="30" />
+        </MediaCodec>
     </Decoders>
     <Include href="media_codecs_google_video.xml" />
 </MediaCodecs>
