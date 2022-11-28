@@ -1,4 +1,3 @@
+binder_call(hal_graphics_composer_default, hal_power_service);
 binder_call(hal_power_service, hal_graphics_composer_default);
 
-# allow composer client to find display config service.
-allow hal_graphics_composer_default hal_power_service:service_manager find;
