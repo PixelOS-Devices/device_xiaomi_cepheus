@@ -1,6 +1,9 @@
 # Bluetooth
 type hal_bt_channel_avoidance_hwservice, hwservice_manager_type;
 
+# Camera - Miui
+type hal_camerapostproc_xiaomi_hwservice, hwservice_manager_type;
+
 # Fingerprint
 type hal_xiaomi_fingerprint_hwservice, hwservice_manager_type;
 

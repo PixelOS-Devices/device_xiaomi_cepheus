@@ -7,6 +7,10 @@
 # Camera
 /mnt/vendor/persist/camera(/.*)?                                                                       u:object_r:camera_persist_file:s0
 
+# Camera - Miui
+/data/user/0/com.android.camera(/.*)?                                   u:object_r:app_data_file:s0
+/vendor/lib64(/.*)?                                                     u:object_r:same_process_hal_file:s0
+
 # Contexthub
 /vendor/bin/hw/android\.hardware\.contexthub@1\.1-service\.generic                                     u:object_r:hal_contexthub_default_exec:s0
 
