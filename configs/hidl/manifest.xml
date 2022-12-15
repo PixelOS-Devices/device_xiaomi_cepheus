@@ -194,11 +194,6 @@
         <fqname>@2.0::IIop/default</fqname>
     </hal>
     <hal format="hidl">
-        <name>vendor.qti.hardware.perf</name>
-        <transport>hwbinder</transport>
-        <fqname>@2.0::IPerf/default</fqname>
-    </hal>
-    <hal format="hidl">
         <name>vendor.qti.hardware.radio.am</name>
         <transport>hwbinder</transport>
         <fqname>@1.0::IQcRilAudio/slot1</fqname>
