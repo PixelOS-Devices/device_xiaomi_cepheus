@@ -34,6 +34,9 @@ $(call inherit-product, vendor/xiaomi/cepheus/cepheus-vendor.mk)
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt
 
+# Call the MiuiCamera setup
+$(call inherit-product-if-exists, vendor/xiaomi/cepheus-miuicamera/config.mk)
+
 # AID/fs configs
 PRODUCT_PACKAGES += \
     fs_config_files
