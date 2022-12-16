@@ -33,6 +33,9 @@ $(call inherit-product, vendor/xiaomi/cepheus/cepheus-vendor.mk)
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt
 
+# Call the MiuiCamera setup
+$(call inherit-product-if-exists, vendor/xiaomi/cepheus-miuicamera/config.mk)
+
 # AAPT
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
