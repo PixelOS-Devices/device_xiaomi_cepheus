@@ -71,9 +71,6 @@ on init
     chown root system /sys/fs/cgroup/memory/bg/tasks
     chmod 0660 /sys/fs/cgroup/memory/bg/tasks
 
-    # Loading kernel modules in background
-    start insmod_sh
-
 on post-fs
     chmod 0755 /sys/kernel/debug/tracing
     
@@ -83,11 +80,15 @@ on post-fs
     mount none /mnt/vendor/dsp/fastrpc_shell_3 /vendor/dsp/cdsp/fastrpc_shell_3 bind
 
 on early-boot
-    # Wait for insmod_sh to finish all modules
-    wait_for_prop vendor.all.modules.ready 1
+    # set RLIMIT_MEMLOCK to 64MB
+    setrlimit 8 67108864 67108864
 
-    # Wait for insmod_sh to finish all boot devices
-    wait_for_prop vendor.all.devices.ready 1
+    # Allow subsystem (modem etc) debugging
+    write /sys/kernel/boot_adsp/boot 1
+    write /sys/kernel/boot_cdsp/boot 1
+    write /sys/devices/virtual/npu/msm_npu/boot 1
+    write /sys/kernel/boot_slpi/boot 1
+    write /sys/devices/virtual/cvp/cvp/boot 1
 
     write /sys/class/drm/card0-DSI-1/status "detect"
     write /sys/module/drm/parameters/vblankoffdelay -1
@@ -149,9 +150,6 @@ on boot
     start vendor.dataadpl
 
 on post-fs-data
-    # set RLIMIT_MEMLOCK to 64MB
-    setrlimit 8 67108864 67108864
-
     # Create directory used by display clients
     mkdir /data/vendor/display 0770 system graphics
 
@@ -323,13 +321,6 @@ service charger /system/bin/charger
     group system graphics input
     capabilities SYS_BOOT
     seclabel u:r:charger:s0
-
-service insmod_sh /vendor/bin/init.insmod.sh /vendor/etc/init.insmod.cfg
-    class main
-    user root
-    group root system
-    disabled
-    oneshot
 
 service vendor.msm_irqbalance /vendor/bin/msm_irqbalance -f /vendor/etc/msm_irqbalance.conf
     class core
