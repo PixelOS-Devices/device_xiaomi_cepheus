@@ -613,7 +613,6 @@ system_ext/etc/permissions/com.android.hotwordenrollment.common.util.xml|563a585
 
 # IRQ balance
 vendor/bin/msm_irqbalance
-vendor/etc/msm_irqbalance.conf
 
 # Keymaster - from Xiaomi/nabu/nabu:12/RKQ1.200826.002/V13.1.22.9.5.DEV:user/release-keys
 vendor/bin/hw/android.hardware.keymaster@4.0-service-qti|97853e573163c69d1e9408d11bec9e94543b0524
