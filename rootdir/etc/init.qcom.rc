@@ -90,10 +90,6 @@ on early-boot
     chown system graphics /sys/devices/virtual/hdcp/msm_hdcp/min_level_change
     chmod 0660 /sys/devices/virtual/hdcp/msm_hdcp/min_level_change
 
-    # Allow system to read measured screen FPS
-    chown system graphics /sys/class/drm/card0/sde-crtc-0/measured_fps
-    chmod 0666 /sys/class/drm/card0/sde-crtc-0/measured_fps
-
 on boot
     chown bluetooth net_bt /sys/class/rfkill/rfkill0/state
     chown bluetooth net_bt /sys/class/rfkill/rfkill0/type
