@@ -49,6 +49,9 @@
     <!-- Different CPU speeds as reported in
          /sys/devices/system/cpu/cpufreq/policy0/scaling_available_frequencies -->
     <array name="cpu.core_speeds.cluster0">
+      <value>300000</value> <!-- 300 MHz CPU speed -->
+      <value>403200</value> <!-- 403 MHz CPU speed -->
+      <value>499200</value> <!-- 499 MHz CPU speed -->
       <value>576000</value> <!-- 576 MHz CPU speed -->
       <value>672000</value> <!-- 672 MHz CPU speed -->
       <value>768000</value> <!-- 768 MHz CPU speed -->
@@ -114,6 +117,9 @@
     <!-- Additional power used by a CPU core from cluster 0 when running at
          different speeds, excluding cluster and active cost -->
     <array name="cpu.core_power.cluster0">
+      <value>39.44</value> <!-- 300 MHz CPU speed -->
+      <value>41.34</value> <!-- 403 MHz CPU speed -->
+      <value>43.57</value> <!-- 499 MHz CPU speed -->
       <value>45.48</value> <!-- 576 MHz CPU speed -->
       <value>47.20</value> <!-- 672 MHz CPU speed -->
       <value>49.64</value> <!-- 768 MHz CPU speed -->
