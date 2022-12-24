@@ -1,2 +1,4 @@
 # Allow adsprpc to read files in graphics sysfs
 r_dir_file(vendor_adsprpcd, vendor_sysfs_graphics)
+
+r_dir_file(vendor_adsprpcd, public_adsprpcd_file)
