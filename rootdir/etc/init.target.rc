@@ -105,6 +105,9 @@ on post-fs-data
     chmod 0644 /dev/elliptic0
     chmod 0644 /dev/elliptic1
 
+    # Enable suspend to RAM
+    write /sys/power/mem_sleep "deep"
+
 on boot
     # For cpusets initialize for Silver Only first and then Silver + Gold
     # Silver Only configuration cannot work with 0-7
