@@ -27,7 +27,6 @@
 
 import /vendor/etc/init/hw/init.qcom.usb.rc
 import /vendor/etc/init/hw/init.target.rc
-import /vendor/etc/init/hw/init.power.rc
 
 on early-init
     # Change ownership of hw_recovery related nodes
@@ -260,6 +259,8 @@ on property:sys.boot_completed=1
 
     chown media audio /sys/kernel/wdsp0/boot
 
+    start qcom-post-boot
+
     # Reinit lmkd to reconfigure lmkd properties
     setprop lmkd.reinit 1
     setprop vendor.setup.power 1
@@ -304,6 +305,13 @@ service qcom-sh /vendor/bin/init.qcom.sh
     class late_start
     user root
     group root system radio
+    oneshot
+
+service qcom-post-boot /vendor/bin/init.qcom.post_boot.sh
+    class late_start
+    user root
+    group root system wakelock graphics
+    disabled
     oneshot
 
 on property:ro.vendor.ril.mbn_copy_completed=1
