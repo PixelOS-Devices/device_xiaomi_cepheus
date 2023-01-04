@@ -116,6 +116,10 @@ case "$target" in
             echo 20000 > $l3prime/mem_latency/ratio_ceil
         done
     done
+
+    # Enable idle state listener
+            echo 1   > /sys/class/drm/card0/device/idle_encoder_mask
+            echo 100 > /sys/class/drm/card0/device/idle_timeout_ms
     ;;
 esac
 
