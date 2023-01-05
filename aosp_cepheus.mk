@@ -37,6 +37,3 @@ PRODUCT_MANUFACTURER := Xiaomi
 
 # Recovery
 TARGET_USES_AOSP_RECOVERY := true
-
-# Include firmware
-$(call inherit-product, vendor/xiaomi-firmware/cepheus/firmware.mk)
