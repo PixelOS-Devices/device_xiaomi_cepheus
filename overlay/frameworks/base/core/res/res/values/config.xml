@@ -589,9 +589,6 @@
 
     <!-- How long it takes for the HW to start illuminating after the illumination is requested. -->
     <integer name="config_udfps_illumination_transition_ms">0</integer>
-
-    <!-- Enable Screen Off FOD Toggle -->
-    <bool name="config_supportsScreenOffUdfps">true</bool>
     
     <!-- Whether or not wcg (wide color gamut) should be enabled on this device,
           we only enabled it while the device has ability of mixed color spaces composition -->
@@ -599,16 +596,4 @@
 
     <!-- Type of the udfps long press sensor. Empty if long press is not supported. -->
     <string name="config_dozeUdfpsLongPressSensorType" translatable="false">dummy.sensor.udfps</string>
-
-    <!-- The list of package IDs that are allowed to use aux cameras.
-         NOTE: If this list is empty then all apps will be able to use aux cameras. -->
-    <string-array name="config_cameraAuxPackageAllowList" translatable="false">
-        <item>org.codeaurora.snapcam</item>
-        <item>com.android.camera</item>
-	<item>org.lineageos.aperture</item>
-        <item>org.lineageos.aperture.dev</item>
-    </string-array>
-    
-    <!-- Pocket Lock -->
-    <bool name="config_pocketModeSupported">false</bool>
 </resources>
