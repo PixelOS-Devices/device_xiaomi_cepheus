@@ -45,10 +45,6 @@
 # Remosaic
 /vendor/bin/remosaic_daemon                                                                            u:object_r:remosaic_daemon_exec:s0
 
-# Pixel Thermalhal
-/vendor/bin/hw/android\.hardware\.thermal@2\.0-service\.cepheus                                        u:object_r:hal_thermal_default_exec:s0
-/vendor/bin/thermal_logd                                                                               u:object_r:init-thermal-logging-sh_exec:s0
-
 # Sensors
 /dev/elliptic(.*)?                                                                                     u:object_r:sound_device:s0
 
