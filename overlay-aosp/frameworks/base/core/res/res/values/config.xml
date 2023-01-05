@@ -23,6 +23,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Pocket Lock -->
     <bool name="config_pocketModeSupported">false</bool>
+    <bool name="config_pocketUseLightSensor">false</bool>
 
     <!-- Enable Screen Off FOD Toggle -->
     <bool name="config_supportsScreenOffUdfps">true</bool>
