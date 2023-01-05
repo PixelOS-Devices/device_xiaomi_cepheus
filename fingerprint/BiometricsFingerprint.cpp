@@ -38,6 +38,10 @@
 #define FOD_STATUS_ON 1
 #define FOD_STATUS_OFF 0
 
+#define DIMLAYER_HBM_PATH "/sys/devices/platform/soc/soc:qcom,dsi-display-primary/dimlayer_hbm"
+#define DIMLAYER_HBM_ON 1
+#define DIMLAYER_HBM_OFF 0
+
 #define FOD_UI_PATH "/sys/devices/platform/soc/soc:qcom,dsi-display-primary/fod_ui"
 
 namespace {
@@ -466,10 +470,12 @@ Return<bool> BiometricsFingerprint::isUdfps(uint32_t /* sensorId */) {
 
 Return<void> BiometricsFingerprint::onFingerDown(uint32_t /* x */, uint32_t /* y */,
                                                 float /* minor */, float /* major */) {
+    set(DIMLAYER_HBM_PATH, DIMLAYER_HBM_ON);
     return Void();
 }
 
 Return<void> BiometricsFingerprint::onFingerUp() {
+    set(DIMLAYER_HBM_PATH, DIMLAYER_HBM_OFF);
     return Void();
 }
 
