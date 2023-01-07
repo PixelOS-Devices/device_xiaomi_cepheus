@@ -36,4 +36,7 @@
 	<item>org.lineageos.aperture</item>
         <item>org.lineageos.aperture.dev</item>
     </string-array>
+
+    <!-- Does the device support color inversion -->
+    <bool name="config_displayInversionAvailable">false</bool>
 </resources>
