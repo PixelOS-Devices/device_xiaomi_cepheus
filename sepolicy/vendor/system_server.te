@@ -3,5 +3,8 @@ get_prop(system_server, vendor_camera_prop)
 
 allow system_server vendor_proc_shs:dir search;
 
+# Allow system_server to get App Zygote PGID
+allow system_server app_zygote:process getpgid;
+
 # /proc/last_kmsg
 allow system_server proc_last_kmsg:file r_file_perms;
