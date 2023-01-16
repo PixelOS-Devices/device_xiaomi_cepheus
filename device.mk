@@ -475,7 +475,7 @@ PRODUCT_PACKAGES += \
 
 # QDCM
 PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/qdcm/,$(TARGET_COPY_OUT_VENDOR)/etc)
+    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/qdcm/,$(TARGET_COPY_OUT_VENDOR)/etc)
 
 # Shipping API
 PRODUCT_SHIPPING_API_LEVEL := 28
