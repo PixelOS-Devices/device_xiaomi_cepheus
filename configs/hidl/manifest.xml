@@ -110,7 +110,7 @@
     <hal format="hidl">
         <name>com.qualcomm.qti.uceservice</name>
         <transport>hwbinder</transport>
-        <fqname>@2.3::IUceService/com.qualcomm.qti.uceservice</fqname>
+        <fqname>@2.1::IUceService/com.qualcomm.qti.uceservice</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.goodix.hardware.biometrics.fingerprint</name>
@@ -125,10 +125,7 @@
     <hal format="hidl">
         <name>vendor.qti.data.factory</name>
         <transport>hwbinder</transport>
-        <fqname>@2.0::IFactory/default</fqname>
         <fqname>@2.1::IFactory/default</fqname>
-        <fqname>@2.2::IFactory/default</fqname>
-        <fqname>@2.3::IFactory/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.hardware.alarm</name>
@@ -203,8 +200,8 @@
     <hal format="hidl">
         <name>vendor.qti.hardware.radio.ims</name>
         <transport>hwbinder</transport>
-        <fqname>@1.7::IImsRadio/imsradio0</fqname>
-        <fqname>@1.7::IImsRadio/imsradio1</fqname>
+        <fqname>@1.6::IImsRadio/imsradio0</fqname>
+        <fqname>@1.6::IImsRadio/imsradio1</fqname>
     </hal>
     <hal format="hidl">
         <name>com.qualcomm.qti.imscmservice</name>
@@ -214,7 +211,7 @@
     <hal format="hidl">
         <name>vendor.qti.ims.factory</name>
         <transport>hwbinder</transport>
-        <fqname>@1.1::IImsFactory/default</fqname>
+        <fqname>@1.0::IImsFactory/default</fqname>
      </hal>
      <hal format="hidl">
         <name>vendor.qti.hardware.radio.internal.deviceinfo</name>
@@ -224,8 +221,8 @@
     <hal format="hidl">
         <name>vendor.qti.hardware.radio.lpa</name>
         <transport>hwbinder</transport>
-        <fqname>@1.1::IUimLpa/UimLpa0</fqname>
-        <fqname>@1.1::IUimLpa/UimLpa1</fqname>
+        <fqname>@1.0::IUimLpa/UimLpa0</fqname>
+        <fqname>@1.0::IUimLpa/UimLpa1</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.hardware.radio.qcrilhook</name>
@@ -242,8 +239,8 @@
     <hal format="hidl">
         <name>vendor.qti.hardware.radio.qtiradio</name>
         <transport>hwbinder</transport>
-        <fqname>@2.6::IQtiRadio/slot1</fqname>
-        <fqname>@2.6::IQtiRadio/slot2</fqname>
+        <fqname>@2.4::IQtiRadio/slot1</fqname>
+        <fqname>@2.4::IQtiRadio/slot2</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.hardware.radio.uim</name>
