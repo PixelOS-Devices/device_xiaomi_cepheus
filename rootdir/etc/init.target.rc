@@ -30,15 +30,6 @@ on early-init
     symlink /data/tombstones /tombstones
 
 on init
-    write /dev/stune/foreground/schedtune.sched_boost_no_override 1
-    write /dev/stune/top-app/schedtune.sched_boost_no_override 1
-
-    write /dev/stune/schedtune.colocate 0
-    write /dev/stune/background/schedtune.colocate 0
-    write /dev/stune/system-background/schedtune.colocate 0
-    write /dev/stune/foreground/schedtune.colocate 0
-    write /dev/stune/top-app/schedtune.colocate 1
-
     wait /dev/block/platform/soc/1d84000.ufshc
     symlink /dev/block/platform/soc/1d84000.ufshc /dev/block/bootdevice
 
@@ -78,10 +69,6 @@ on early-fs
 
 on early-fs
     start vold
-
-    # set default schedTune value for camera-daemon
-    write /dev/stune/camera-daemon/schedtune.prefer_idle 1
-    write /dev/stune/camera-daemon/schedtune.boost 0
 
 on fs
     start hwservicemanager
@@ -146,10 +133,8 @@ on property:sys.boot_completed=1
     # Runtime fs tuning
     write /sys/block/sda/queue/read_ahead_kb 128
     write /sys/block/sda/queue/nr_requests 128
-    write /sys/block/sda/queue/iostats 1
     write /sys/block/sde/queue/read_ahead_kb 128
     write /sys/block/sde/queue/nr_requests 128
-    write /sys/block/sde/queue/iostats 1
 
     # First setup runtime cpusets only for silver cpus
     write /dev/cpuset/top-app/cpus 0-3
@@ -173,10 +158,33 @@ on property:sys.boot_completed=1
     write /dev/cpuset/system-background/cpus 0-3
     write /dev/cpuset/restricted/cpus 0-3
 
-    # Configure dynamic stune boost
-    write /sys/module/cpu_boost/parameters/dynamic_stune_boost 15
-    write /sys/module/cpu_boost/parameters/dynamic_stune_boost_ms 1500
-    write /dev/stune/top-app/schedtune.sched_boost 15
+    # Uclamp tunings
+
+    setprop kernel.sched_util_clamp_min_rt_default 500
+
+    #top-app
+    write /dev/cpuset/top-app/uclamp.max max
+    write /dev/cpuset/top-app/uclamp.min 10
+    write /dev/cpuset/top-app/uclamp.boosted 1
+    write /dev/cpuset/top-app/uclamp.latency_sensitive 1
+
+    #foreground
+    write /dev/cpuset/foreground/uclamp.max 50
+    write /dev/cpuset/foreground/uclamp.min 0
+    write /dev/cpuset/foreground/uclamp.boosted 0
+    write /dev/cpuset/foreground/uclamp.latency_sensitive 0
+
+    #background
+    write /dev/cpuset/background/uclamp.max max
+    write /dev/cpuset/background/uclamp.min 20
+    write /dev/cpuset/background/uclamp.boosted 0
+    write /dev/cpuset/background/uclamp.latency_sensitive 0
+
+    #system-background
+    write /dev/cpuset/system-background/uclamp.max 40
+    write /dev/cpuset/system-background/uclamp.min 0
+    write /dev/cpuset/system-background/uclamp.boosted 0
+    write /dev/cpuset/system-background/uclamp.latency_sensitive 0
 
 service vendor.pd_mapper /vendor/bin/pd-mapper
     class core
