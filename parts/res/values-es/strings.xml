@@ -16,9 +16,13 @@
 -->
 <resources>
     
+    <!-- Ambient settings -->
+    <string name="ambient_enable">Usar pantalla ambiente</string>
+    
     <!-- Clear Speaker -->
-    <string name="clear_speaker_title">清理扬声器</string>
-    <string name="clear_speaker_summary">播放一段约30秒的音频来清理扬声器</string>
-    <string name="clear_speaker_text">当扬声器被少量灰尘覆盖时，将音量调至最大运行1-2次。\n\n当扬声器充满灰尘时运行2-5次, 同时将扬声器朝下轻轻摇晃您的设备。</string>
+    <string name="clear_speaker_enable">Activar modo de limpiar altavoz</string>
+    <string name="clear_speaker_title">Limpiar altavoz</string>
+    <string name="clear_speaker_summary">Reproduce un audio de 30 segundos para limpiar el altavoz</string>
+    <string name="clear_speaker_text">Ejecuta esta función una o dos veces si el polvo está tapando el altavoz. Sube el volumen al máximo.\n\nSi el altavoz está un poco tapado, ejecuta esta función de 2 a 5 veces mientras agitas el dispositivo con el altavoz hacia abajo.\n\nADVERTENCIA: ¡Asegurate de no tener auriculares conectados!</string>
 
 </resources>

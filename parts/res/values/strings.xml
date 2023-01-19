@@ -15,13 +15,6 @@
      limitations under the License.
 -->
 <resources>
-    <!-- Pick-up to wake gesture-->
-    <string name="wake_gesture_title">Wake up</string>
-    <string name="wake_gesture_summary">Wake up the device instead of pulsing notifications</string>
-
-    <!-- Device specific settings -->
-    <string name="device_settings_app_name">Advanced settings</string>
-
     <!-- Clear Speaker -->
     <string name="clear_speaker_title">Clear speaker</string>
     <string name="clear_speaker_enable">Enable clear speaker mode</string>
@@ -30,8 +23,8 @@
 
     <!-- Ambient settings -->
     <string name="ambient_enable">Use ambient display</string>
-    <string name="ambient_display_title">Ambient display</string>
 
+    <!-- Doze settings -->
     <string name="doze_brightness_title">Always on brightness</string>
     <string name="doze_brightness_summary">%s mode is enabled</string>
 </resources>
