@@ -32,4 +32,8 @@
     
     <!-- Does the device support color inversion -->
     <bool name="config_displayInversionAvailable">false</bool>
+
+    <!-- Pocket Lock -->
+    <bool name="config_pocketModeSupported">false</bool>
+    <bool name="config_pocketUseLightSensor">false</bool>
 </resources>
