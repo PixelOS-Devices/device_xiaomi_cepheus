@@ -158,9 +158,11 @@ debug.egl.hw=0
 debug.mdpcomp.logs=0
 debug.sf.disable_client_composition_cache=1
 debug.sf.enable_egl_image_tracker=1
+debug.sf.enable_gl_backpressure=1
 debug.sf.enable_hwc_vds=1
 debug.sf.hw=1
 debug.sf.latch_unsignaled=0
+debug.sf.predict_hwc_composition_strategy=0
 ro.hardware.egl=adreno
 ro.hardware.vulkan=adreno
 ro.opengles.version=196610
@@ -180,7 +182,6 @@ vendor.display.enable_default_color_mode=1
 vendor.display.enable_null_display=0
 vendor.display.enable_optimize_refresh=1
 vendor.gralloc.disable_ubwc=0
-debug.sf.enable_gl_backpressure=1
 
 # FOD
 ro.hardware.fp.fod=true
