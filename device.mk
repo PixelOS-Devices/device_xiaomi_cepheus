@@ -262,7 +262,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/bin/init.qcom.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qcom.sh
 
 PRODUCT_PACKAGES += \
-    init.affinity.sh \
     init.insmod.sh
 
 # Inherit several Android Go Configurations(Beneficial for everyone, even on non-Go devices)
