@@ -104,6 +104,14 @@ vendor/lib/hw/audio.primary.msmnile.so
 vendor/lib/hw/vendor.qti.hardware.audiohalext@1.0-impl.so
 vendor/lib/vendor.qti.hardware.audiohalext@1.0.so
 
+# Alarm - from caymanslm-user 12 SKQ1.211103.001 8450120221101 release-keys
+product/app/PowerOffAlarm/PowerOffAlarm.apk:system_ext/app/PowerOffAlarm/PowerOffAlarm.apk|f0a86fc11b38c059912303857bc4c79155430bcc
+vendor/bin/hw/vendor.qti.hardware.alarm@1.0-service|37b4999095331f4f3dd6c118ee0bdea4bdf7f003
+vendor/bin/power_off_alarm|04e651db91ca2598f1bf50453fdb49a63463b2dc
+vendor/etc/init/vendor.qti.hardware.alarm@1.0-service.rc|a03a9a1c818595b19272ea6ffb466e23a7fc3b05
+vendor/lib64/hw/vendor.qti.hardware.alarm@1.0-impl.so|f2b57130987c65a1dc596bf83a2b09e086df9286
+vendor/lib64/vendor.qti.hardware.alarm@1.0.so|74675e4f720d75db031a0db4ca21463ebd331f34
+
 # Bluetooth
 vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti
 vendor/etc/init/android.hardware.bluetooth@1.0-service-qti.rc
