@@ -225,6 +225,7 @@ on charger
 
     start qcom-post-boot
     start vendor.hvdcp_opti
+    start vendor.power_off_alarm
 
 service vendor.thermal-engine /vendor/bin/thermal-engine
    class main
