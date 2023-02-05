@@ -123,8 +123,8 @@ on boot
     write /proc/sys/kernel/printk "6 6 1 7"
     
     # Power off alarm permissions
-    mkdir /persist/alarm 0777 system system
-    chmod 0666 /persist/alarm/data
+    mkdir /mnt/vendor/persist/alarm 0777 system system
+    chmod 0666 /mnt/vendor/persist/alarm/data
 
     # bond0 used by FST Manager
     chown wifi wifi /sys/class/net/bond0/bonding/queue_id
