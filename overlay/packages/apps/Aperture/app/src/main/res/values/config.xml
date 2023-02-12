@@ -42,9 +42,9 @@
              </string-array>
     -->
     <string-array name="config_additionalVideoConfigurations">
-        <item>0</item>  <item>sd|hd|fhd|uhd</item> <item>60</item> <!-- Wide -->
-        <item>1</item>  <item>sd|hd|fhd</item>     <item>30</item> <!-- Front -->
-        <item>2</item> <item>sd|hd|fhd|uhd</item> <item>60</item> <!-- Telephoto -->
-        <item>3</item> <item>sd|hd|fhd</item>     <item>60</item> <!-- Ultra Wide -->
+        <item>0</item> <item>sd|hd|fhd|uhd</item> <item>60</item> <!-- Wide -->
+        <item>1</item> <item>sd|hd|fhd</item> <item>30</item> <!-- Front -->
+        <item>2</item> <item>sd|hd|fhd</item> <item>60</item> <!-- Telephoto -->
+        <item>3</item> <item>sd|hd|fhd</item> <item>60</item> <!-- Ultra Wide -->
     </string-array>
 </resources>
