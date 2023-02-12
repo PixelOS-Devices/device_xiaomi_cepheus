@@ -9,13 +9,13 @@
 
     <!-- List of ID of auxiliary cameras that must be ignored by the app. -->
     <string-array name="config_ignoredAuxCameraIds">
-        <item>60</item>
-	<item>61</item>
-        <item>62</item>
-	<item>63</item>
-        <item>100</item>
-	<item>101</item>
-        <item>120</item>
+        <item>4</item>
+	<item>5</item>
+        <item>6</item>
+	<item>7</item>
+        <item>8</item>
+	<item>9</item>
+        <item>10</item>
     </string-array>
     
     <!-- An array of triplets made of (camera ID, qualities, framerates).
@@ -44,7 +44,7 @@
     <string-array name="config_additionalVideoConfigurations">
         <item>0</item>  <item>sd|hd|fhd|uhd</item> <item>60</item> <!-- Wide -->
         <item>1</item>  <item>sd|hd|fhd</item>     <item>30</item> <!-- Front -->
-        <item>20</item> <item>sd|hd|fhd|uhd</item> <item>60</item> <!-- Telephoto -->
-        <item>21</item> <item>sd|hd|fhd</item>     <item>60</item> <!-- Ultra Wide -->
+        <item>2</item> <item>sd|hd|fhd|uhd</item> <item>60</item> <!-- Telephoto -->
+        <item>3</item> <item>sd|hd|fhd</item>     <item>60</item> <!-- Ultra Wide -->
     </string-array>
 </resources>
