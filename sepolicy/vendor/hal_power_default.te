@@ -5,6 +5,7 @@ allow hal_power_default vendor_sysfs_kgsl:lnk_file rw_file_perms;
 allow hal_power_default {
   input_device
   vendor_latency_device
+  sysfs_touchpanel
 }:chr_file rw_file_perms;
 
 allow hal_power_default {
@@ -13,6 +14,7 @@ allow hal_power_default {
   sysfs_devices_system_cpu
   sysfs_fs_f2fs
   sysfs_msm_subsys
+  sysfs_touchpanel
   vendor_sysfs_devfreq
   vendor_sysfs_graphics
   vendor_sysfs_kgsl
@@ -23,6 +25,7 @@ allow hal_power_default {
   cgroup
   input_device
   sysfs_fs_f2fs
+  sysfs_touchpanel
   vendor_sysfs_devfreq
   vendor_sysfs_graphics
 }:dir r_dir_perms;
@@ -30,6 +33,7 @@ allow hal_power_default {
 allow hal_power_default {
   sysfs_fs_f2fs
   sysfs_msm_subsys
+  sysfs_touchpanel
   vendor_sysfs_devfreq
 }:dir search;
 
