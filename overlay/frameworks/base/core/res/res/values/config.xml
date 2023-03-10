@@ -930,7 +930,6 @@
         <item>"/system_ext/priv-app/SystemUIGoogle/SystemUIGoogle.apk"</item>
         <item>"/system/bin/surfaceflinger"</item>
         <item>"/system/lib64/libbcinfo.so"</item>
-        <item>"/vendor/lib/libCB.so"</item>
         <item>"/vendor/lib/libgsl.so"</item>
         <item>"/vendor/lib64/libCB.so"</item>
         <item>"/vendor/lib64/libgsl.so"</item>
