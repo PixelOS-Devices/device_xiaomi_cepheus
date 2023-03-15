@@ -243,7 +243,7 @@ persist.vendor.sensors.enable.mag_filter=true
 persist.vendor.uspsensor=default
 
 # SoC
-ro.soc.manufacturer=Qualcomm
+ro.soc.manufacturer=QTI
 ro.soc.model=SM8150
 
 # System
