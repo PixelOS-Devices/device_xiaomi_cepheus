@@ -74,11 +74,6 @@ function configure_memory_parameters() {
     # use Google default LMK series for all 64-bit targets >=2GB.
     echo 1 > /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk
     echo 1 > /sys/module/lowmemorykiller/parameters/oom_reaper
-
-    # Set allocstall_threshold to 0
-    # Set swappiness to 100
-    echo 0 > /sys/module/vmpressure/parameters/allocstall_threshold
-    echo 100 > /proc/sys/vm/swappiness
 }
 
 case "$target" in
