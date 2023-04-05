@@ -416,7 +416,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/power-libperfmgr/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
 
 # Preopt SystemUI
-PRODUCT_DEXPREOPT_SPEED_APPS += SystemUIGoogle
+PRODUCT_DEXPREOPT_SPEED_APPS += SystemUI
 
 # QTI
 PRODUCT_PACKAGES += \
