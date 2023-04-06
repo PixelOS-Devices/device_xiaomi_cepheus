@@ -21,7 +21,7 @@
       "Path": "/sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq",
       "Values": [
         "9999999",
-        "576000",
+        "768000",
         "1113600"
       ],
       "DefaultIndex": 1,
@@ -521,7 +521,7 @@
       "PowerHint": "LOW_POWER_LITTLE_CLUSTER_50",
       "Node": "CPULittleClusterMinFreq",
       "Duration": 3600000,
-      "Value": "576000"
+      "Value": "768000"
     },
     {
       "PowerHint": "LOW_POWER_LITTLE_CLUSTER_60",
@@ -533,7 +533,7 @@
       "PowerHint": "LOW_POWER_LITTLE_CLUSTER_60",
       "Node": "CPULittleClusterMinFreq",
       "Duration": 3600000,
-      "Value": "576000"
+      "Value": "768000"
     },
     {
       "PowerHint": "LOW_POWER_LITTLE_CLUSTER_70",
