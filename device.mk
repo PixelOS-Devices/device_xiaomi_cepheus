@@ -34,9 +34,6 @@ $(call inherit-product, vendor/xiaomi/cepheus/cepheus-vendor.mk)
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt
 
-# Call the MiuiCamera setup
-$(call inherit-product-if-exists, vendor/xiaomi/cepheus-miuicamera/config.mk)
-
 # AID/fs configs
 PRODUCT_PACKAGES += \
     fs_config_files
@@ -177,12 +174,6 @@ PRODUCT_PACKAGES += \
 
 # Enable incremental FS feature
 PRODUCT_PROPERTY_OVERRIDES += ro.incremental.enable=1
-
-# Enable blurs, hidden under dev option
-PRODUCT_PRODUCT_PROPERTIES += \
-    ro.surface_flinger.supports_background_blur=1 \
-    persist.sys.sf.disable_blurs=1 \
-    ro.sf.blurs_are_expensive=1
 
 # Fastbootd
 PRODUCT_PACKAGES += \
