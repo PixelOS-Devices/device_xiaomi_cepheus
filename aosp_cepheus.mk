@@ -26,6 +26,7 @@ $(call inherit-product, vendor/aosp/config/common_full_phone.mk)
 
 # PixelOS flags
 TARGET_INCLUDE_LIVE_WALLPAPERS := true
+TARGET_SUPPORTS_NEXT_GEN_ASSISTANT := true
 
 # Boot animation
 TARGET_BOOT_ANIMATION_RES := 1080
