@@ -469,6 +469,11 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/google/pixel \
     hardware/xiaomi
 
+# Task Profiles
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/task_profiles.json:$(TARGET_COPY_OUT_VENDOR)/etc/task_profiles.json \
+    system/core/libprocessgroup/profiles/cgroups.json:$(TARGET_COPY_OUT_VENDOR)/etc/cgroups.json
+
 # Telephony
 PRODUCT_PACKAGES += \
     extphonelib \
