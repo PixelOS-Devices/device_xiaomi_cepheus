@@ -41,11 +41,6 @@ genfscon sysfs /touchpanel                                                      
 # UFS
 genfscon sysfs /devices/platform/soc/1d84000.ufshc/clkgate_enable               u:object_r:vendor_sysfs_scsi_host:s0
 
-# vbswap device for zswap
-# apply zram context to avoid complicating policies
-genfscon sysfs /devices/virtual/block/vbswap0     u:object_r:sysfs_zram:s0
-genfscon sysfs /devices/virtual/block/vbswap0/uevent    u:object_r:sysfs_zram_uevent:s0
-
 # Wakeup source stats
 genfscon sysfs /devices/0306_02.01.00/wakeup                                                                                                       u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/goodix_ts.0/wakeup                                                                                                u:object_r:sysfs_wakeup:s0
