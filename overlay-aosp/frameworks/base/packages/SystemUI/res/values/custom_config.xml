@@ -30,7 +30,7 @@
     <integer name="config_udfps_hbm_type">0</integer>
 
     <!-- Whether usage of the proximity sensor during doze is supported -->
-    <bool name="doze_proximity_sensor_supported">false</bool>
+    <bool name="doze_proximity_sensor_supported">true</bool>
 
     <!-- StatusBar burn-in protection -->
     <bool name="config_statusBarBurnInProtection">true</bool>
