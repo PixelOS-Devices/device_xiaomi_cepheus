@@ -165,7 +165,7 @@
     </array>
 
     <!-- Additional power used when screen is ambient mode -->
-    <item name="ambient.on">32</item>
+    <item name="ambient.on.display0">32</item>
 
     <!-- Additional power used when screen is turned on at minimum brightness -->
     <item name="screen.on.display0">98</item>
