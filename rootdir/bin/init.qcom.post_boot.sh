@@ -194,4 +194,7 @@ case "$target" in
     ;;
 esac
 
+# Enable PowerHAL hint processing
+setprop vendor.powerhal.init 1
+
 setprop vendor.post_boot.parsed 1
