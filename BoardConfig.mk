@@ -158,8 +158,9 @@ BOARD_USES_METADATA_PARTITION := true
 
 TARGET_USERIMAGES_USE_F2FS := true
 
-# Disable sparse for ext images
+# Disable sparse on all filesystem images
 TARGET_USERIMAGES_SPARSE_EXT_DISABLED := true
+TARGET_USERIMAGES_SPARSE_EROFS_DISABLED := true
 
 TARGET_COPY_OUT_ODM := odm
 TARGET_COPY_OUT_PRODUCT := product
