@@ -18,18 +18,12 @@
  * limitations under the License.
  */
 
-/* ​​​​​Changes from Qualcomm Innovation Center are provided under the following license:
- * Copyright (c) 2023 Qualcomm Innovation Center, Inc. All rights reserved.
- * SPDX-License-Identifier: BSD-3-Clause-Clear
- */
-
 #ifndef ANDROID_HARDWARE_GNSS_V2_1_GNSSMEASUREMENT_H
 #define ANDROID_HARDWARE_GNSS_V2_1_GNSSMEASUREMENT_H
 
 #include <android/hardware/gnss/2.1/IGnssMeasurement.h>
 #include <hidl/MQDescriptor.h>
 #include <hidl/Status.h>
-#include "MeasurementAPIClient.h"
 
 namespace android {
 namespace hardware {
@@ -80,9 +74,7 @@ struct GnssMeasurement : public V2_1::IGnssMeasurement {
         sp<GnssMeasurement> mGnssMeasurement;
     };
 
-    template <typename T>
-    Return<IGnssMeasurement::GnssMeasurementStatus> setCallback(
-            const sp<T>& callback, sp<T>& myCallback, GnssPowerMode powerMode);
+ private:
     sp<GnssMeasurementDeathRecipient> mGnssMeasurementDeathRecipient = nullptr;
     sp<V1_0::IGnssMeasurementCallback> mGnssMeasurementCbIface = nullptr;
     sp<V1_1::IGnssMeasurementCallback> mGnssMeasurementCbIface_1_1 = nullptr;
