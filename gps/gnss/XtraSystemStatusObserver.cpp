@@ -47,7 +47,7 @@
 #include <LocAdapterBase.h>
 #include <DataItemId.h>
 #include <DataItemsFactoryProxy.h>
-#include <DataItemConcreteTypes.h>
+#include <DataItemConcreteTypesBase.h>
 
 using namespace loc_util;
 using namespace loc_core;
@@ -322,10 +322,13 @@ void XtraSystemStatusObserver::notify(const list<IDataItemCore*>& dlist)
                 const list<IDataItemCore*>& dataItemList) :
                 mXtraSysStatObj(xtraSysStatObs) {
             for (auto eachItem : dataItemList) {
-                IDataItemCore* dataitem = DataItemsFactoryProxy::createNewDataItem(eachItem);
+                IDataItemCore* dataitem = DataItemsFactoryProxy::createNewDataItem(
+                        eachItem->getId());
                 if (NULL == dataitem) {
                     break;
                 }
+                // Copy the contents of the data item
+                dataitem->copy(eachItem);
 
                 mDataItemList.push_back(dataitem);
             }
@@ -346,7 +349,8 @@ void XtraSystemStatusObserver::notify(const list<IDataItemCore*>& dlist)
                 {
                     case NETWORKINFO_DATA_ITEM_ID:
                     {
-                        NetworkInfoDataItem* networkInfo = static_cast<NetworkInfoDataItem*>(each);
+                        NetworkInfoDataItemBase* networkInfo =
+                                static_cast<NetworkInfoDataItemBase*>(each);
                         NetworkInfoType* networkHandleInfo =
                                 static_cast<NetworkInfoType*>(networkInfo->getNetworkHandle());
                         mXtraSysStatObj->updateConnections(networkInfo->getAllTypes(),
@@ -356,14 +360,16 @@ void XtraSystemStatusObserver::notify(const list<IDataItemCore*>& dlist)
 
                     case TAC_DATA_ITEM_ID:
                     {
-                        TacDataItem* tac = static_cast<TacDataItem*>(each);
+                        TacDataItemBase* tac =
+                                 static_cast<TacDataItemBase*>(each);
                         mXtraSysStatObj->updateTac(tac->mValue);
                     }
                     break;
 
                     case MCCMNC_DATA_ITEM_ID:
                     {
-                        MccmncDataItem* mccmnc = static_cast<MccmncDataItem*>(each);
+                        MccmncDataItemBase* mccmnc =
+                                static_cast<MccmncDataItemBase*>(each);
                         mXtraSysStatObj->updateMccMnc(mccmnc->mValue);
                     }
                     break;

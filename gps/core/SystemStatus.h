@@ -26,43 +26,6 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  */
-
-/*
-Changes from Qualcomm Innovation Center are provided under the following license:
-
-Copyright (c) 2022-2023 Qualcomm Innovation Center, Inc. All rights reserved.
-
-Redistribution and use in source and binary forms, with or without
-modification, are permitted (subject to the limitations in the
-disclaimer below) provided that the following conditions are met:
-
-    * Redistributions of source code must retain the above copyright
-      notice, this list of conditions and the following disclaimer.
-
-    * Redistributions in binary form must reproduce the above
-      copyright notice, this list of conditions and the following
-      disclaimer in the documentation and/or other materials provided
-      with the distribution.
-
-    * Neither the name of Qualcomm Innovation Center, Inc. nor the names of its
-      contributors may be used to endorse or promote products derived
-      from this software without specific prior written permission.
-
-NO EXPRESS OR IMPLIED LICENSES TO ANY PARTY'S PATENT RIGHTS ARE
-GRANTED BY THIS LICENSE. THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT
-HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED
-WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
-MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
-IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
-ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
-GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
-INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
-IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
-OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
-IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
-
 #ifndef __SYSTEM_STATUS__
 #define __SYSTEM_STATUS__
 
@@ -76,7 +39,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <MsgTask.h>
 #include <IDataItemCore.h>
 #include <IOsObserver.h>
-#include <DataItemConcreteTypes.h>
+#include <DataItemConcreteTypesBase.h>
 #include <SystemStatusOsObserver.h>
 
 #include <gps_extended_c.h>
@@ -125,7 +88,6 @@ public:
     }
     virtual void dump(void) {};
     inline virtual bool ignore() { return false; };
-    virtual bool equals(const SystemStatusItemBase& peer) { return false; }
 };
 
 class SystemStatusLocation : public SystemStatusItemBase
@@ -141,7 +103,7 @@ public:
         mValid(true),
         mLocation(location),
         mLocationEx(locationEx) {}
-    bool equals(const SystemStatusItemBase& peer) override;
+    bool equals(const SystemStatusLocation& peer);
     void dump(void) override;
 };
 
@@ -171,7 +133,7 @@ public:
         mLeapSecUnc(0),
         mTimeUncNs(0ULL) {}
     inline SystemStatusTimeAndClock(const SystemStatusPQWM1& nmea);
-    bool equals(const SystemStatusItemBase& peer) override;
+    bool equals(const SystemStatusTimeAndClock& peer);
     void dump(void) override;
 };
 
@@ -182,7 +144,7 @@ public:
     inline SystemStatusXoState() :
         mXoState(0) {}
     inline SystemStatusXoState(const SystemStatusPQWM1& nmea);
-    bool equals(const SystemStatusItemBase& peer) override;
+    bool equals(const SystemStatusXoState& peer);
     void dump(void) override;
 };
 
@@ -229,7 +191,7 @@ public:
         mGalBpAmpI(0),
         mGalBpAmpQ(0) {}
     inline SystemStatusRfAndParams(const SystemStatusPQWM1& nmea);
-    bool equals(const SystemStatusItemBase& peer) override;
+    bool equals(const SystemStatusRfAndParams& peer);
     void dump(void) override;
 };
 
@@ -240,7 +202,7 @@ public:
     inline SystemStatusErrRecovery() :
         mRecErrorRecovery(0) {};
     inline SystemStatusErrRecovery(const SystemStatusPQWM1& nmea);
-    bool equals(const SystemStatusItemBase& peer) override;
+    bool equals(const SystemStatusErrRecovery& peer);
     inline bool ignore() override { return 0 == mRecErrorRecovery; };
     void dump(void) override;
 };
@@ -265,7 +227,7 @@ public:
         mEpiAltUnc(0),
         mEpiSrc(0) {}
     inline SystemStatusInjectedPosition(const SystemStatusPQWP1& nmea);
-    bool equals(const SystemStatusItemBase& peer) override;
+    bool equals(const SystemStatusInjectedPosition& peer);
     void dump(void) override;
 };
 
@@ -287,7 +249,7 @@ public:
         mBestHepe(0),
         mBestAltUnc(0) {}
     inline SystemStatusBestPosition(const SystemStatusPQWP2& nmea);
-    bool equals(const SystemStatusItemBase& peer) override;
+    bool equals(const SystemStatusBestPosition& peer);
     void dump(void) override;
 };
 
@@ -323,7 +285,7 @@ public:
         mQzssXtraValid(0),
         mNavicXtraValid(0) {}
     inline SystemStatusXtra(const SystemStatusPQWP3& nmea);
-    bool equals(const SystemStatusItemBase& peer) override;
+    bool equals(const SystemStatusXtra& peer);
     void dump(void) override;
 };
 
@@ -343,7 +305,7 @@ public:
         mGalEpheValid(0ULL),
         mQzssEpheValid(0) {}
     inline SystemStatusEphemeris(const SystemStatusPQWP4& nmea);
-    bool equals(const SystemStatusItemBase& peer) override;
+    bool equals(const SystemStatusEphemeris& peer);
     void dump(void) override;
 };
 
@@ -389,7 +351,7 @@ public:
         mQzssBadMask(0),
         mNavicBadMask(0) {}
     inline SystemStatusSvHealth(const SystemStatusPQWP5& nmea);
-    bool equals(const SystemStatusItemBase& peer) override;
+    bool equals(const SystemStatusSvHealth& peer);
     void dump(void) override;
 };
 
@@ -401,7 +363,7 @@ public:
     inline SystemStatusPdr() :
         mFixInfoMask(0) {}
     inline SystemStatusPdr(const SystemStatusPQWP6& nmea);
-    bool equals(const SystemStatusItemBase& peer) override;
+    bool equals(const SystemStatusPdr& peer);
     void dump(void) override;
 };
 
@@ -425,7 +387,7 @@ public:
         }
     }
     inline SystemStatusNavData(const SystemStatusPQWP7& nmea);
-    bool equals(const SystemStatusItemBase& peer) override;
+    bool equals(const SystemStatusNavData& peer);
     void dump(void) override;
 };
 
@@ -439,139 +401,153 @@ public:
         mFixInfoMask(0),
         mHepeLimit(0) {}
     inline SystemStatusPositionFailure(const SystemStatusPQWS1& nmea);
-    bool equals(const SystemStatusItemBase& peer) override;
+    bool equals(const SystemStatusPositionFailure& peer);
     void dump(void) override;
 };
 
 /******************************************************************************
  SystemStatus report data structure - from DataItem observer
 ******************************************************************************/
-class SystemStatusAirplaneMode : public SystemStatusItemBase {
+class SystemStatusAirplaneMode : public SystemStatusItemBase,
+        public AirplaneModeDataItemBase
+{
 public:
-    AirplaneModeDataItem mDataItem;
-    inline SystemStatusAirplaneMode(bool mode=false): mDataItem(mode) {}
-    inline SystemStatusAirplaneMode(const AirplaneModeDataItem& itemBase):
-            mDataItem(itemBase) {}
-    inline bool equals(const SystemStatusItemBase& peer) override {
-        return mDataItem.mMode == ((const SystemStatusAirplaneMode&)peer).mDataItem.mMode;
+    inline SystemStatusAirplaneMode(bool mode=false) :
+            AirplaneModeDataItemBase(mode) {}
+    inline SystemStatusAirplaneMode(const AirplaneModeDataItemBase& itemBase) :
+            AirplaneModeDataItemBase(itemBase) {}
+    inline bool equals(const SystemStatusAirplaneMode& peer) {
+        return (mMode == peer.mMode);
     }
 };
 
-class SystemStatusENH : public SystemStatusItemBase {
+class SystemStatusENH : public SystemStatusItemBase,
+        public ENHDataItemBase
+{
 public:
-    ENHDataItem mDataItem;
-    inline SystemStatusENH(bool enabled, ENHDataItem::Fields updateBit = ENHDataItem::FIELD_MAX):
-            mDataItem(enabled, updateBit) {}
-    inline SystemStatusENH(const ENHDataItem& itemBase): mDataItem(itemBase) {}
-    inline virtual SystemStatusItemBase& collate(SystemStatusItemBase& peer) {
-        mDataItem.mEnhFields = ((const SystemStatusENH&)peer).mDataItem.mEnhFields;
-        mDataItem.updateFields();
-        return *this;
-    }
-    inline bool equals(const SystemStatusItemBase& peer) override {
-        return mDataItem.mEnhFields == ((const SystemStatusENH&)peer).mDataItem.mEnhFields;
+    inline SystemStatusENH(bool enabled=false) :
+            ENHDataItemBase(enabled) {}
+    inline SystemStatusENH(const ENHDataItemBase& itemBase) :
+            ENHDataItemBase(itemBase) {}
+    inline bool equals(const SystemStatusENH& peer) {
+        return (mEnabled == peer.mEnabled);
     }
 };
 
-class SystemStatusGpsState : public SystemStatusItemBase {
+class SystemStatusGpsState : public SystemStatusItemBase,
+        public GPSStateDataItemBase
+{
 public:
-    GPSStateDataItem mDataItem;
-    inline SystemStatusGpsState(bool enabled=false): mDataItem(enabled) {}
-    inline SystemStatusGpsState(const GPSStateDataItem& itemBase): mDataItem(itemBase) {}
-    inline bool equals(const SystemStatusItemBase& peer) override {
-        return mDataItem.mEnabled == ((const SystemStatusGpsState&)peer).mDataItem.mEnabled;
+    inline SystemStatusGpsState(bool enabled=false) :
+            GPSStateDataItemBase(enabled) {}
+    inline SystemStatusGpsState(const GPSStateDataItemBase& itemBase) :
+            GPSStateDataItemBase(itemBase) {}
+    inline bool equals(const SystemStatusGpsState& peer) {
+        return (mEnabled == peer.mEnabled);
     }
     inline void dump(void) override {
-        LOC_LOGD("GpsState: state=%u", mDataItem.mEnabled);
+        LOC_LOGD("GpsState: state=%u", mEnabled);
     }
 };
 
-class SystemStatusNLPStatus : public SystemStatusItemBase {
+class SystemStatusNLPStatus : public SystemStatusItemBase,
+        public NLPStatusDataItemBase
+{
 public:
-    NLPStatusDataItem mDataItem;
-    inline SystemStatusNLPStatus(bool enabled=false): mDataItem(enabled) {}
-    inline SystemStatusNLPStatus(const NLPStatusDataItem& itemBase): mDataItem(itemBase) {}
-    inline bool equals(const SystemStatusItemBase& peer) override {
-        return mDataItem.mEnabled == ((const SystemStatusNLPStatus&)peer).mDataItem.mEnabled;
+    inline SystemStatusNLPStatus(bool enabled=false) :
+            NLPStatusDataItemBase(enabled) {}
+    inline SystemStatusNLPStatus(const NLPStatusDataItemBase& itemBase) :
+            NLPStatusDataItemBase(itemBase) {}
+    inline bool equals(const SystemStatusNLPStatus& peer) {
+        return (mEnabled == peer.mEnabled);
     }
 };
 
-class SystemStatusWifiHardwareState : public SystemStatusItemBase {
+class SystemStatusWifiHardwareState : public SystemStatusItemBase,
+        public WifiHardwareStateDataItemBase
+{
 public:
-    WifiHardwareStateDataItem mDataItem;
-    inline SystemStatusWifiHardwareState(bool enabled=false): mDataItem(enabled) {}
-    inline SystemStatusWifiHardwareState(const WifiHardwareStateDataItem& itemBase):
-            mDataItem(itemBase) {}
-    inline bool equals(const SystemStatusItemBase& peer) override {
-        return mDataItem.mEnabled == ((const SystemStatusWifiHardwareState&)peer).mDataItem.mEnabled;
+    inline SystemStatusWifiHardwareState(bool enabled=false) :
+            WifiHardwareStateDataItemBase(enabled) {}
+    inline SystemStatusWifiHardwareState(const WifiHardwareStateDataItemBase& itemBase) :
+            WifiHardwareStateDataItemBase(itemBase) {}
+    inline bool equals(const SystemStatusWifiHardwareState& peer) {
+        return (mEnabled == peer.mEnabled);
     }
 };
 
-class SystemStatusNetworkInfo : public SystemStatusItemBase {
+class SystemStatusNetworkInfo : public SystemStatusItemBase,
+        public NetworkInfoDataItemBase
+{
+    NetworkInfoDataItemBase* mSrcObjPtr;
 public:
-    NetworkInfoDataItem mDataItem;
-    inline SystemStatusNetworkInfo(int32_t type=0, std::string typeName="", string subTypeName="",
-            bool connected=false, bool roaming=false,
-            uint64_t networkHandle=NETWORK_HANDLE_UNKNOWN, string apn = "") :
-                mDataItem((NetworkType)type, type, typeName,
-                        subTypeName, connected && (!roaming), connected, roaming, networkHandle,
-                        apn) {}
-    inline SystemStatusNetworkInfo(const NetworkInfoDataItem& itemBase): mDataItem(itemBase) {}
-    inline bool equals(const SystemStatusItemBase& peer) override {
-        const NetworkInfoDataItem peerDI = ((const SystemStatusNetworkInfo&)peer).mDataItem;
-        bool rtv = (mDataItem.mAllTypes == peerDI.mAllTypes) &&
-                (mDataItem.mConnected == peerDI.mConnected);
+    inline SystemStatusNetworkInfo(
+            int32_t type = 0,
+            std::string typeName = "",
+            string subTypeName = "",
+            bool connected = false,
+            bool roaming = false,
+            uint64_t networkHandle = NETWORK_HANDLE_UNKNOWN,
+            string apn = "") :
+            NetworkInfoDataItemBase(
+                    (NetworkType)type,
+                    type,
+                    typeName,
+                    subTypeName,
+                    connected && (!roaming),
+                    connected,
+                    roaming,
+                    networkHandle, apn),
+            mSrcObjPtr(nullptr) {}
+    inline SystemStatusNetworkInfo(const NetworkInfoDataItemBase& itemBase) :
+            NetworkInfoDataItemBase(itemBase),
+            mSrcObjPtr((NetworkInfoDataItemBase*)&itemBase) {
+        mType = (int32_t)itemBase.getType();
+    }
+    inline bool equals(const SystemStatusNetworkInfo& peer) {
+        bool rtv = (peer.mConnected == mConnected);
         for (uint8_t i = 0; rtv && i < MAX_NETWORK_HANDLES; ++i) {
-            rtv = (mDataItem.mAllNetworkHandles[i] == peerDI.mAllNetworkHandles[i]) && rtv;
+            rtv &= (mAllNetworkHandles[i] == peer.mAllNetworkHandles[i]);
         }
-        rtv = rtv && !peerDI.mApn.compare(mDataItem.mApn);
-        LOC_LOGv("NetworkInfoDataItem quals: %d", rtv);
-        return rtv;
+        return rtv && !peer.mApn.compare(mApn);
     }
     inline virtual SystemStatusItemBase& collate(SystemStatusItemBase& curInfo) {
         LOC_LOGv("NetworkInfo: mAllTypes=%" PRIx64 " connected=%u mType=%x mApn=%s",
-                 mDataItem.mAllTypes, mDataItem.mConnected, mDataItem.mType,
-                 mDataItem.mApn.c_str());
-        uint64_t allTypes = (static_cast<SystemStatusNetworkInfo&>(curInfo)).mDataItem.mAllTypes;
-        string& apn = (static_cast<SystemStatusNetworkInfo&>(curInfo)).mDataItem.mApn;
+                 mAllTypes, mConnected, mType, mApn.c_str());
+        uint64_t allTypes = (static_cast<SystemStatusNetworkInfo&>(curInfo)).mAllTypes;
+        string& apn = (static_cast<SystemStatusNetworkInfo&>(curInfo)).mApn;
         // Replace current with cached table for now and then update
-        memcpy(mDataItem.mAllNetworkHandles,
-               static_cast<SystemStatusNetworkInfo&>(curInfo).mDataItem.getNetworkHandle(),
-               sizeof(mDataItem.mAllNetworkHandles));
-         // Update the apn for non-mobile type connections.
-         if (TYPE_MOBILE != mDataItem.mType && apn.compare("") != 0) {
-            mDataItem.mApn = apn;
-         }
-        if (mDataItem.mConnected) {
-            mDataItem.mAllTypes |= allTypes;
+        memcpy(mAllNetworkHandles,
+               (static_cast<SystemStatusNetworkInfo&>(curInfo)).getNetworkHandle(),
+               sizeof(mAllNetworkHandles));
+        // Update the apn for non-mobile type connections.
+        if (TYPE_MOBILE != mType && apn.compare("") != 0) {
+            mApn = apn;
+        }
+        if (mConnected) {
+            mAllTypes |= allTypes;
             for (uint8_t i = 0; i < MAX_NETWORK_HANDLES; ++i) {
-                if (mDataItem.mNetworkHandle ==
-                        mDataItem.mAllNetworkHandles[i].networkHandle) {
+                if (mNetworkHandle == mAllNetworkHandles[i].networkHandle) {
                     LOC_LOGD("collate duplicate detected, not updating");
                     break;
                 }
-                if (NETWORK_HANDLE_UNKNOWN ==
-                        mDataItem.mAllNetworkHandles[i].networkHandle) {
-                    mDataItem.mAllNetworkHandles[i].networkHandle =
-                            mDataItem.mNetworkHandle;
-                    mDataItem.mAllNetworkHandles[i].networkType =
-                            (loc_core::NetworkType) mDataItem.mType;
+                if (NETWORK_HANDLE_UNKNOWN == mAllNetworkHandles[i].networkHandle) {
+                    mAllNetworkHandles[i].networkHandle = mNetworkHandle;
+                    mAllNetworkHandles[i].networkType = (loc_core::NetworkType) mType;
                     break;
                 }
             }
-        } else if (0 != mDataItem.mAllTypes) {
+        } else if (0 != mAllTypes) {
             uint8_t deletedIndex = MAX_NETWORK_HANDLES;
             uint8_t lastValidIndex = 0;
             uint8_t typeCount = 0;
-            for (; lastValidIndex < MAX_NETWORK_HANDLES && NETWORK_HANDLE_UNKNOWN !=
-                    mDataItem.mAllNetworkHandles[lastValidIndex].networkHandle;
+            for (; lastValidIndex < MAX_NETWORK_HANDLES &&
+                     NETWORK_HANDLE_UNKNOWN != mAllNetworkHandles[lastValidIndex].networkHandle;
                  ++lastValidIndex) {
                 // Maintain count for number of network handles still
                 // connected for given type
-                if (mDataItem.mType ==
-                        mDataItem.mAllNetworkHandles[lastValidIndex].networkType) {
-                    if (mDataItem.mNetworkHandle ==
-                            mDataItem.mAllNetworkHandles[lastValidIndex].networkHandle) {
+                if (mType == (int32_t)mAllNetworkHandles[lastValidIndex].networkType) {
+                    if (mNetworkHandle == mAllNetworkHandles[lastValidIndex].networkHandle) {
                         deletedIndex = lastValidIndex;
                     } else {
                         typeCount++;
@@ -586,241 +562,264 @@ public:
             if (MAX_NETWORK_HANDLES != deletedIndex) {
                 LOC_LOGd("deletedIndex:%u, lastValidIndex:%u, typeCount:%u",
                         deletedIndex, lastValidIndex, typeCount);
-                mDataItem.mAllNetworkHandles[deletedIndex] =
-                        mDataItem.mAllNetworkHandles[lastValidIndex];
-                mDataItem.mAllNetworkHandles[lastValidIndex].networkHandle =
-                        NETWORK_HANDLE_UNKNOWN;
-                mDataItem.mAllNetworkHandles[lastValidIndex].networkType = TYPE_UNKNOWN;
+                mAllNetworkHandles[deletedIndex] = mAllNetworkHandles[lastValidIndex];
+                mAllNetworkHandles[lastValidIndex].networkHandle = NETWORK_HANDLE_UNKNOWN;
+                mAllNetworkHandles[lastValidIndex].networkType = TYPE_UNKNOWN;
             }
 
             // If no more handles of given type, set bitmask
             if (0 == typeCount) {
-                mDataItem.mAllTypes = (allTypes & (~mDataItem.mAllTypes));
-                LOC_LOGD("mAllTypes:%" PRIx64, mDataItem.mAllTypes);
+                mAllTypes = (allTypes & (~mAllTypes));
+                LOC_LOGD("mAllTypes:%" PRIx64, mAllTypes);
             }
-        } // else (mDataItem.mConnected == false && mDataItem.mAllTypes == 0)
-          // we keep mDataItem->mAllTypes as 0, which means no more connections.
+        } // else (mConnected == false && mAllTypes == 0)
+          // we keep mAllTypes as 0, which means no more connections.
+
+        if (nullptr != mSrcObjPtr) {
+            // this is critical, changing mAllTypes of the original obj
+            mSrcObjPtr->mAllTypes = mAllTypes;
+            memcpy(mSrcObjPtr->mAllNetworkHandles,
+                   mAllNetworkHandles,
+                   sizeof(mSrcObjPtr->mAllNetworkHandles));
+        }
         return *this;
     }
     inline void dump(void) override {
         LOC_LOGD("NetworkInfo: mAllTypes=%" PRIx64 " connected=%u mType=%x mApn=%s",
-                mDataItem.mAllTypes, mDataItem.mConnected, mDataItem.mType, mDataItem.mApn.c_str());
+                 mAllTypes, mConnected, mType, mApn.c_str());
     }
 };
 
-class SystemStatusServiceInfo : public SystemStatusItemBase {
+class SystemStatusServiceInfo : public SystemStatusItemBase,
+        public RilServiceInfoDataItemBase
+{
 public:
-    RilServiceInfoDataItem mDataItem;
-    inline SystemStatusServiceInfo(): mDataItem() {}
-    inline SystemStatusServiceInfo(const RilServiceInfoDataItem& itemBase):
-            mDataItem(itemBase) {}
-    inline bool equals(const SystemStatusItemBase& peer) override {
-        return ((const SystemStatusServiceInfo&)peer).mDataItem == mDataItem;
+    inline SystemStatusServiceInfo() :
+            RilServiceInfoDataItemBase() {}
+    inline SystemStatusServiceInfo(const RilServiceInfoDataItemBase& itemBase) :
+            RilServiceInfoDataItemBase(itemBase) {}
+    inline bool equals(const SystemStatusServiceInfo& peer) {
+        return static_cast<const RilServiceInfoDataItemBase&>(peer) ==
+                static_cast<const RilServiceInfoDataItemBase&>(*this);
     }
 };
 
-class SystemStatusRilCellInfo : public SystemStatusItemBase {
+class SystemStatusRilCellInfo : public SystemStatusItemBase,
+        public RilCellInfoDataItemBase
+{
 public:
-    RilCellInfoDataItem mDataItem;
-    inline SystemStatusRilCellInfo(): mDataItem() {}
-    inline SystemStatusRilCellInfo(const RilCellInfoDataItem& itemBase): mDataItem(itemBase) {}
-    inline bool equals(const SystemStatusItemBase& peer) override {
-        return ((const SystemStatusRilCellInfo&)peer).mDataItem == mDataItem;
+    inline SystemStatusRilCellInfo() :
+            RilCellInfoDataItemBase() {}
+    inline SystemStatusRilCellInfo(const RilCellInfoDataItemBase& itemBase) :
+            RilCellInfoDataItemBase(itemBase) {}
+    inline bool equals(const SystemStatusRilCellInfo& peer) {
+        return static_cast<const RilCellInfoDataItemBase&>(peer) ==
+                static_cast<const RilCellInfoDataItemBase&>(*this);
     }
 };
 
-class SystemStatusServiceStatus : public SystemStatusItemBase {
+class SystemStatusServiceStatus : public SystemStatusItemBase,
+        public ServiceStatusDataItemBase
+{
 public:
-    ServiceStatusDataItem mDataItem;
-    inline SystemStatusServiceStatus(int32_t mServiceState=0): mDataItem(mServiceState) {}
-    inline SystemStatusServiceStatus(const ServiceStatusDataItem& itemBase):
-            mDataItem(itemBase) {}
-    inline bool equals(const SystemStatusItemBase& peer) override {
-        return mDataItem.mServiceState ==
-                ((const SystemStatusServiceStatus&)peer).mDataItem.mServiceState;
+    inline SystemStatusServiceStatus(int32_t mServiceState=0) :
+            ServiceStatusDataItemBase(mServiceState) {}
+    inline SystemStatusServiceStatus(const ServiceStatusDataItemBase& itemBase) :
+            ServiceStatusDataItemBase(itemBase) {}
+    inline bool equals(const SystemStatusServiceStatus& peer) {
+        return (mServiceState == peer.mServiceState);
     }
 };
 
-class SystemStatusModel : public SystemStatusItemBase {
+class SystemStatusModel : public SystemStatusItemBase,
+        public ModelDataItemBase
+{
 public:
-    ModelDataItem mDataItem;
-    inline SystemStatusModel(string name=""): mDataItem(name) {}
-    inline SystemStatusModel(const ModelDataItem& itemBase): mDataItem(itemBase) {}
-    inline bool equals(const SystemStatusItemBase& peer) override {
-        return mDataItem.mModel == ((const SystemStatusModel&)peer).mDataItem.mModel;
-    }
-};
-
-class SystemStatusManufacturer : public SystemStatusItemBase {
-public:
-    ManufacturerDataItem mDataItem;
-    inline SystemStatusManufacturer(string name=""): mDataItem(name) {}
-    inline SystemStatusManufacturer(const ManufacturerDataItem& itemBase): mDataItem(itemBase) {}
-    inline bool equals(const SystemStatusItemBase& peer) override {
-        return mDataItem.mManufacturer ==
-                ((const SystemStatusManufacturer&)peer).mDataItem.mManufacturer;
-    }
-};
-
-class SystemStatusAssistedGps : public SystemStatusItemBase {
-public:
-    AssistedGpsDataItem mDataItem;
-    inline SystemStatusAssistedGps(bool enabled=false): mDataItem(enabled) {}
-    inline SystemStatusAssistedGps(const AssistedGpsDataItem& itemBase): mDataItem(itemBase) {}
-    inline bool equals(const SystemStatusItemBase& peer) override {
-        return mDataItem.mEnabled == ((const SystemStatusAssistedGps&)peer).mDataItem.mEnabled;
-    }
-};
-
-class SystemStatusScreenState : public SystemStatusItemBase {
-public:
-    ScreenStateDataItem mDataItem;
-    inline SystemStatusScreenState(bool state=false): mDataItem(state) {}
-    inline SystemStatusScreenState(const ScreenStateDataItem& itemBase): mDataItem(itemBase) {}
-    inline bool equals(const SystemStatusItemBase& peer) override {
-        return mDataItem.mState == ((const SystemStatusScreenState&)peer).mDataItem.mState;
-    }
-};
-
-class SystemStatusPowerConnectState : public SystemStatusItemBase {
-public:
-    PowerConnectStateDataItem mDataItem;
-    inline SystemStatusPowerConnectState(bool state=false): mDataItem(state) {}
-    inline SystemStatusPowerConnectState(const PowerConnectStateDataItem& itemBase):
-            mDataItem(itemBase) {}
-    inline bool equals(const SystemStatusItemBase& peer) override {
-        return mDataItem.mState == ((const SystemStatusPowerConnectState&)peer).mDataItem.mState;
-    }
-};
-
-class SystemStatusTimeZoneChange : public SystemStatusItemBase {
-public:
-    TimeZoneChangeDataItem mDataItem;
-    inline SystemStatusTimeZoneChange(int64_t currTimeMillis=0ULL, int32_t rawOffset=0,
-            int32_t dstOffset=0): mDataItem(currTimeMillis, rawOffset, dstOffset) {}
-    inline SystemStatusTimeZoneChange(const TimeZoneChangeDataItem& itemBase):
-            mDataItem(itemBase) {}
-    inline bool equals(const SystemStatusItemBase& peer) override {
-        return mDataItem.mCurrTimeMillis ==
-                ((const SystemStatusTimeZoneChange&)peer).mDataItem.mCurrTimeMillis &&
-                mDataItem.mRawOffsetTZ ==
-                ((const SystemStatusTimeZoneChange&)peer).mDataItem.mRawOffsetTZ &&
-                mDataItem.mDstOffsetTZ ==
-                ((const SystemStatusTimeZoneChange&)peer).mDataItem.mDstOffsetTZ;
-    }
-};
-
-class SystemStatusTimeChange : public SystemStatusItemBase {
-public:
-    TimeChangeDataItem mDataItem;
-    inline SystemStatusTimeChange(
-        int64_t currTimeMillis=0ULL, int32_t rawOffset=0, int32_t dstOffset=0):
-        mDataItem(currTimeMillis, rawOffset, dstOffset) {}
-    inline SystemStatusTimeChange(const TimeChangeDataItem& itemBase): mDataItem(itemBase) {}
-    inline bool equals(const SystemStatusItemBase& peer) override {
-        return mDataItem.mCurrTimeMillis ==
-                ((const SystemStatusTimeChange&)peer).mDataItem.mCurrTimeMillis &&
-                mDataItem.mRawOffsetTZ ==
-                ((const SystemStatusTimeChange&)peer).mDataItem.mRawOffsetTZ &&
-                mDataItem.mDstOffsetTZ ==
-                ((const SystemStatusTimeChange&)peer).mDataItem.mDstOffsetTZ;
-    }
-};
-
-class SystemStatusWifiSupplicantStatus : public SystemStatusItemBase {
-public:
-    WifiSupplicantStatusDataItem mDataItem;
-    inline SystemStatusWifiSupplicantStatus(): mDataItem() {}
-    inline SystemStatusWifiSupplicantStatus(const WifiSupplicantStatusDataItem& itemBase):
-            mDataItem(itemBase) {}
-    inline bool equals(const SystemStatusItemBase& peer) override {
-        return mDataItem.mState ==
-                ((const SystemStatusWifiSupplicantStatus&)peer).mDataItem.mState &&
-                mDataItem.mApMacAddressValid ==
-                ((const SystemStatusWifiSupplicantStatus&)peer).mDataItem.mApMacAddressValid &&
-                mDataItem.mWifiApSsidValid ==
-                ((const SystemStatusWifiSupplicantStatus&)peer).mDataItem.mWifiApSsidValid &&
-                mDataItem.mWifiApSsid ==
-                ((const SystemStatusWifiSupplicantStatus&)peer).mDataItem.mWifiApSsid;
+    inline SystemStatusModel(string name="") :
+            ModelDataItemBase(name) {}
+    inline SystemStatusModel(const ModelDataItemBase& itemBase) :
+            ModelDataItemBase(itemBase) {}
+    inline bool equals(const SystemStatusModel& peer) {
+        return (mModel == peer.mModel);
         }
 };
 
-class SystemStatusShutdownState : public SystemStatusItemBase {
+class SystemStatusManufacturer : public SystemStatusItemBase,
+        public ManufacturerDataItemBase
+{
 public:
-    ShutdownStateDataItem mDataItem;
-    inline SystemStatusShutdownState(bool state=false): mDataItem(state) {}
-    inline SystemStatusShutdownState(const ShutdownStateDataItem& itemBase):
-            mDataItem(itemBase) {}
-    inline bool equals(const SystemStatusItemBase& peer) override {
-        return mDataItem.mState == ((const SystemStatusShutdownState&)peer).mDataItem.mState;
+    inline SystemStatusManufacturer(string name="") :
+            ManufacturerDataItemBase(name) {}
+    inline SystemStatusManufacturer(const ManufacturerDataItemBase& itemBase) :
+            ManufacturerDataItemBase(itemBase) {}
+    inline bool equals(const SystemStatusManufacturer& peer) {
+        return (mManufacturer == peer.mManufacturer);
     }
 };
 
-class SystemStatusTac : public SystemStatusItemBase {
+class SystemStatusAssistedGps : public SystemStatusItemBase,
+        public AssistedGpsDataItemBase
+{
 public:
-    TacDataItem mDataItem;
-    inline SystemStatusTac(std::string value=""): mDataItem(value) {}
-    inline SystemStatusTac(const TacDataItem& itemBase): mDataItem(itemBase) {}
-    inline bool equals(const SystemStatusItemBase& peer) override {
-        return mDataItem.mValue == ((const SystemStatusTac&)peer).mDataItem.mValue;
+    inline SystemStatusAssistedGps(bool enabled=false) :
+            AssistedGpsDataItemBase(enabled) {}
+    inline SystemStatusAssistedGps(const AssistedGpsDataItemBase& itemBase) :
+            AssistedGpsDataItemBase(itemBase) {}
+    inline bool equals(const SystemStatusAssistedGps& peer) {
+        return (mEnabled == peer.mEnabled);
+    }
+};
+
+class SystemStatusScreenState : public SystemStatusItemBase,
+        public ScreenStateDataItemBase
+{
+public:
+    inline SystemStatusScreenState(bool state=false) :
+            ScreenStateDataItemBase(state) {}
+    inline SystemStatusScreenState(const ScreenStateDataItemBase& itemBase) :
+            ScreenStateDataItemBase(itemBase) {}
+    inline bool equals(const SystemStatusScreenState& peer) {
+        return (mState == peer.mState);
+    }
+};
+
+class SystemStatusPowerConnectState : public SystemStatusItemBase,
+        public PowerConnectStateDataItemBase
+{
+public:
+    inline SystemStatusPowerConnectState(bool state=false) :
+            PowerConnectStateDataItemBase(state) {}
+    inline SystemStatusPowerConnectState(const PowerConnectStateDataItemBase& itemBase) :
+            PowerConnectStateDataItemBase(itemBase) {}
+    inline bool equals(const SystemStatusPowerConnectState& peer) {
+        return (mState == peer.mState);
+    }
+};
+
+class SystemStatusTimeZoneChange : public SystemStatusItemBase,
+        public TimeZoneChangeDataItemBase
+{
+public:
+    inline SystemStatusTimeZoneChange(
+            int64_t currTimeMillis=0ULL, int32_t rawOffset=0, int32_t dstOffset=0) :
+            TimeZoneChangeDataItemBase(currTimeMillis, rawOffset, dstOffset) {}
+    inline SystemStatusTimeZoneChange(const TimeZoneChangeDataItemBase& itemBase) :
+            TimeZoneChangeDataItemBase(itemBase) {}
+    inline bool equals(const SystemStatusTimeZoneChange& peer) {
+        return ((mCurrTimeMillis == peer.mCurrTimeMillis) &&
+                (mRawOffsetTZ == peer.mRawOffsetTZ) &&
+                (mDstOffsetTZ == peer.mDstOffsetTZ));
+    }
+};
+
+class SystemStatusTimeChange : public SystemStatusItemBase,
+        public TimeChangeDataItemBase
+{
+public:
+    inline SystemStatusTimeChange(
+            int64_t currTimeMillis=0ULL, int32_t rawOffset=0, int32_t dstOffset=0) :
+            TimeChangeDataItemBase(currTimeMillis, rawOffset, dstOffset) {}
+    inline SystemStatusTimeChange(const TimeChangeDataItemBase& itemBase) :
+            TimeChangeDataItemBase(itemBase) {}
+    inline bool equals(const SystemStatusTimeChange& peer) {
+        return ((mCurrTimeMillis == peer.mCurrTimeMillis) &&
+                (mRawOffsetTZ == peer.mRawOffsetTZ) &&
+                (mDstOffsetTZ == peer.mDstOffsetTZ));
+    }
+};
+
+class SystemStatusWifiSupplicantStatus : public SystemStatusItemBase,
+        public WifiSupplicantStatusDataItemBase
+{
+public:
+    inline SystemStatusWifiSupplicantStatus() :
+            WifiSupplicantStatusDataItemBase() {}
+    inline SystemStatusWifiSupplicantStatus(const WifiSupplicantStatusDataItemBase& itemBase) :
+            WifiSupplicantStatusDataItemBase(itemBase) {}
+    inline bool equals(const SystemStatusWifiSupplicantStatus& peer) {
+        return ((mState == peer.mState) &&
+                (mApMacAddressValid == peer.mApMacAddressValid) &&
+                (mWifiApSsidValid == peer.mWifiApSsidValid) &&
+                (mWifiApSsid == peer.mWifiApSsid));
+        }
+};
+
+class SystemStatusShutdownState : public SystemStatusItemBase,
+        public ShutdownStateDataItemBase
+{
+public:
+    inline SystemStatusShutdownState(bool state=false) :
+            ShutdownStateDataItemBase(state) {}
+    inline SystemStatusShutdownState(const ShutdownStateDataItemBase& itemBase) :
+            ShutdownStateDataItemBase(itemBase) {}
+    inline bool equals(const SystemStatusShutdownState& peer) {
+        return (mState == peer.mState);
+    }
+};
+
+class SystemStatusTac : public SystemStatusItemBase,
+        public TacDataItemBase
+{
+public:
+    inline SystemStatusTac(std::string value="") :
+            TacDataItemBase(value) {}
+    inline SystemStatusTac(const TacDataItemBase& itemBase) :
+            TacDataItemBase(itemBase) {}
+    inline bool equals(const SystemStatusTac& peer) {
+        return (mValue == peer.mValue);
     }
     inline void dump(void) override {
-        LOC_LOGD("Tac: value=%s", mDataItem.mValue.c_str());
+        LOC_LOGD("Tac: value=%s", mValue.c_str());
     }
 };
 
-class SystemStatusMccMnc : public SystemStatusItemBase {
+class SystemStatusMccMnc : public SystemStatusItemBase,
+        public MccmncDataItemBase
+{
 public:
-    MccmncDataItem mDataItem;
-    inline SystemStatusMccMnc(std::string value=""): mDataItem(value) {}
-    inline SystemStatusMccMnc(const MccmncDataItem& itemBase): mDataItem(itemBase) {}
-    inline bool equals(const SystemStatusItemBase& peer) override {
-        return mDataItem.mValue == ((const SystemStatusMccMnc&)peer).mDataItem.mValue;
+    inline SystemStatusMccMnc(std::string value="") :
+            MccmncDataItemBase(value) {}
+    inline SystemStatusMccMnc(const MccmncDataItemBase& itemBase) :
+            MccmncDataItemBase(itemBase) {}
+    inline bool equals(const SystemStatusMccMnc& peer) {
+        return (mValue == peer.mValue);
     }
     inline void dump(void) override {
-        LOC_LOGD("TacMccMnc value=%s", mDataItem.mValue.c_str());
+        LOC_LOGD("TacMccMnc value=%s", mValue.c_str());
     }
 };
 
-class SystemStatusBtDeviceScanDetail : public SystemStatusItemBase {
+class SystemStatusBtDeviceScanDetail : public SystemStatusItemBase,
+        public BtDeviceScanDetailsDataItemBase
+{
 public:
-    BtDeviceScanDetailsDataItem mDataItem;
-    inline SystemStatusBtDeviceScanDetail(): mDataItem() {}
-    inline SystemStatusBtDeviceScanDetail(const BtDeviceScanDetailsDataItem& itemBase):
-            mDataItem(itemBase) {}
-    inline bool equals(const SystemStatusItemBase& peer) override {
-        return mDataItem.mApSrnRssi ==
-                ((const SystemStatusBtDeviceScanDetail&)peer).mDataItem.mApSrnRssi &&
-                memcmp(mDataItem.mApSrnMacAddress,
-                ((const SystemStatusBtDeviceScanDetail&)peer).mDataItem.mApSrnMacAddress,
-                sizeof(mDataItem.mApSrnMacAddress)) == 0 &&
-                mDataItem.mApSrnTimestamp ==
-                ((const SystemStatusBtDeviceScanDetail&)peer).mDataItem.mApSrnTimestamp &&
-                mDataItem.mRequestTimestamp ==
-                ((const SystemStatusBtDeviceScanDetail&)peer).mDataItem.mRequestTimestamp &&
-                mDataItem.mReceiveTimestamp ==
-                ((const SystemStatusBtDeviceScanDetail&)peer).mDataItem.mReceiveTimestamp;
+    inline SystemStatusBtDeviceScanDetail() :
+            BtDeviceScanDetailsDataItemBase() {}
+    inline SystemStatusBtDeviceScanDetail(const BtDeviceScanDetailsDataItemBase& itemBase) :
+            BtDeviceScanDetailsDataItemBase(itemBase) {}
+    inline bool equals(const SystemStatusBtDeviceScanDetail& peer) {
+        return ((mApSrnRssi == peer.mApSrnRssi) &&
+                (0 == memcmp(mApSrnMacAddress, peer.mApSrnMacAddress, sizeof(mApSrnMacAddress))) &&
+                (mApSrnTimestamp == peer.mApSrnTimestamp) &&
+                (mRequestTimestamp == peer.mRequestTimestamp) &&
+                (mReceiveTimestamp == peer.mReceiveTimestamp));
     }
 };
 
-class SystemStatusBtleDeviceScanDetail : public SystemStatusItemBase {
+class SystemStatusBtleDeviceScanDetail : public SystemStatusItemBase,
+        public BtLeDeviceScanDetailsDataItemBase
+{
 public:
-    BtLeDeviceScanDetailsDataItem mDataItem;
-    inline SystemStatusBtleDeviceScanDetail(): mDataItem() {}
-    inline SystemStatusBtleDeviceScanDetail(const BtLeDeviceScanDetailsDataItem& itemBase):
-            mDataItem(itemBase) {}
-    inline bool equals(const SystemStatusItemBase& peer) override {
-        return mDataItem.mApSrnRssi ==
-                ((const SystemStatusBtleDeviceScanDetail&)peer).mDataItem.mApSrnRssi &&
-                memcmp(mDataItem.mApSrnMacAddress,
-                ((const SystemStatusBtleDeviceScanDetail&)peer).mDataItem.mApSrnMacAddress,
-                sizeof(mDataItem.mApSrnMacAddress)) == 0 &&
-                mDataItem.mApSrnTimestamp ==
-                ((const SystemStatusBtleDeviceScanDetail&)peer).mDataItem.mApSrnTimestamp &&
-                mDataItem.mRequestTimestamp ==
-                ((const SystemStatusBtleDeviceScanDetail&)peer).mDataItem.mRequestTimestamp &&
-                mDataItem.mReceiveTimestamp ==
-                ((const SystemStatusBtleDeviceScanDetail&)peer).mDataItem.mReceiveTimestamp;
+    inline SystemStatusBtleDeviceScanDetail() :
+            BtLeDeviceScanDetailsDataItemBase() {}
+    inline SystemStatusBtleDeviceScanDetail(const BtLeDeviceScanDetailsDataItemBase& itemBase) :
+            BtLeDeviceScanDetailsDataItemBase(itemBase) {}
+    inline bool equals(const SystemStatusBtleDeviceScanDetail& peer) {
+        return ((mApSrnRssi == peer.mApSrnRssi) &&
+                (0 == memcmp(mApSrnMacAddress, peer.mApSrnMacAddress, sizeof(mApSrnMacAddress))) &&
+                (mApSrnTimestamp == peer.mApSrnTimestamp) &&
+                (mRequestTimestamp == peer.mRequestTimestamp) &&
+                (mReceiveTimestamp == peer.mReceiveTimestamp));
     }
 };
 
@@ -919,8 +918,6 @@ public:
                                bool roaming, NetworkHandle networkHandle, string& apn);
     bool updatePowerConnectState(bool charging);
     void resetNetworkInfo();
-    bool eventOptInStatus(bool userConsent);
-    bool eventRegionStatus(bool region);
 };
 
 } // namespace loc_core

@@ -26,11 +26,6 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-/* ​​​​​Changes from Qualcomm Innovation Center are provided under the following license:
- * Copyright (c) 2023 Qualcomm Innovation Center, Inc. All rights reserved.
- * SPDX-License-Identifier: BSD-3-Clause-Clear
- */
-
 #define LOG_NDEBUG 0
 #define LOG_TAG "LocSvc_APIClientBase"
 
@@ -362,8 +357,7 @@ uint32_t LocationAPIClientBase::locAPIStartTracking(TrackingOptions& options)
     pthread_mutex_lock(&mMutex);
     if (mLocationAPI) {
         if (mTracking) {
-            pthread_mutex_unlock(&mMutex);
-            locAPIUpdateTrackingOptions(options);
+            LOC_LOGW("%s:%d] Existing tracking session present", __FUNCTION__, __LINE__);
         } else {
             uint32_t session = mLocationAPI->startTracking(options);
             LOC_LOGI("%s:%d] start new session: %d", __FUNCTION__, __LINE__, session);
@@ -373,13 +367,11 @@ uint32_t LocationAPIClientBase::locAPIStartTracking(TrackingOptions& options)
             mRequestQueues[REQUEST_TRACKING].reset(session);
             mRequestQueues[REQUEST_TRACKING].push(new StartTrackingRequest(*this));
             mTracking = true;
-            pthread_mutex_unlock(&mMutex);
         }
 
         retVal = LOCATION_ERROR_SUCCESS;
-    } else {
-        pthread_mutex_unlock(&mMutex);
     }
+    pthread_mutex_unlock(&mMutex);
 
     return retVal;
 }
