@@ -47,9 +47,6 @@
     <dimen name="config_rounded_mask_size_top">120px</dimen>
     <dimen name="config_rounded_mask_size_bottom">130px</dimen>
 
-    <!-- The radius of the enrollment progress bar, in dp -->
-    <integer name="config_udfpsEnrollProgressBar" translatable="false">92</integer>
-
     <!-- Location on the screen of the center of the physical power button. -->
     <dimen name="physical_power_button_center_screen_location_y">900px</dimen>
 
