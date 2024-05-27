@@ -19,3 +19,11 @@ cc_library_shared {
     proprietary: true,
     srcs: ["megvii_shim.cpp"],
 }
+
+cc_library_static {
+    name: "libcameraservice_extension.cepheus",
+    srcs: ["CameraProviderExtension.cpp"],
+    include_dirs: [
+        "frameworks/av/services/camera/libcameraservice/common"
+    ],
+}
