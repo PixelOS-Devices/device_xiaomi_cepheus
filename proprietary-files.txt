@@ -448,7 +448,7 @@ system_ext/lib64/vendor.qti.diaghal@1.0.so|8afba353fd94d2e955dd626a0eb8029530219
 # DPM (vendor)
 vendor/bin/dpmQmiMgr
 vendor/etc/init/dpmQmiMgr.rc
-vendor/lib64/com.qualcomm.qti.dpm.api@1.0.so
+vendor/lib64/com.qualcomm.qti.dpm.api@1.0.so;MODULE_SUFFIX=_vendor
 vendor/lib64/libdpmqmihal.so
 
 # DRM
