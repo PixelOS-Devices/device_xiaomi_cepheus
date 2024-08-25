@@ -1,3 +1,6 @@
+# Current blobs with ELF checks disabled:
+# imsdatadaemon, libcne, libwqe, lowi-server depend on libwpa_client, which is a gnu makefile target
+
 # ADSP
 vendor/bin/adsprpcd
 vendor/bin/cdsprpcd
@@ -377,12 +380,12 @@ vendor/etc/cne/wqeclient/VZW/VZW_profile6.xml
 vendor/etc/cne/profileSlm.xml
 vendor/etc/cne/slm.conf
 vendor/etc/default-permissions/com.qualcomm.qti.cne.xml
-vendor/lib64/libcne.so
+vendor/lib64/libcne.so;DISABLE_CHECKELF
 vendor/lib64/libcneapiclient.so
 vendor/lib64/libcneoplookup.so
 vendor/lib64/libcneqmiutils.so
 vendor/lib64/libwms.so
-vendor/lib64/libwqe.so
+vendor/lib64/libwqe.so;DISABLE_CHECKELF
 vendor/lib64/libxml.so
 vendor/lib64/vendor.qti.data.slm@1.0.so
 vendor/lib64/vendor.qti.hardware.data.cne.internal.api@1.0.so
@@ -530,7 +533,7 @@ vendor/lib64/vendor.qti.hardware.cacert@1.0.so
 # GPS - from LA.UM.9.1.r1-11500.02-SMxxx0.QSSI12.0
 vendor/bin/garden_app|177597e4f5afaae68f53840624262c9853f50696
 vendor/bin/loc_launcher|64ba2a8214ecdc70965c4a9025321e12bc50f793
-vendor/bin/lowi-server|6a78b8e8ff3267277a49f78a7ba11498229ed2fb
+vendor/bin/lowi-server;DISABLE_CHECKELF|6a78b8e8ff3267277a49f78a7ba11498229ed2fb
 vendor/bin/mlid|8c95b94b28d38dcff915b68b1086c932533334c3
 vendor/bin/slim_daemon|f206fd59f5b6fd1531d559d150f0dcb1633b6e13
 vendor/bin/xtra-daemon|a832090f030ac09937d0e47dc55758b4710f6c6e
@@ -902,7 +905,7 @@ system_ext/priv-app/ims/ims.apk|78656f381ca9f688036068b5b9b196bd141bc4d8
 
 # Radio_IMS (vendor)
 vendor/bin/ims_rtp_daemon
-vendor/bin/imsdatadaemon
+vendor/bin/imsdatadaemon;DISABLE_CHECKELF
 vendor/bin/imsqmidaemon
 vendor/bin/imsrcsd
 vendor/etc/init/ims_rtp_daemon.rc
