@@ -54,6 +54,7 @@ function lib_to_package_fixup_vendor_variants() {
 
     case "$1" in
         com.qualcomm.qti.dpm.api@1.0 | \
+	    libmmosal | \
             vendor.qti.imsrtpservice@3.0)
             echo "$1_vendor"
             ;;
