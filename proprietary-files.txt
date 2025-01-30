@@ -347,8 +347,6 @@ system_ext/lib64/vendor.qti.hardware.data.qmi@1.0.so|6fe3f53c35085c34e3c46d7b756
 # CNE (vendor)
 -vendor/app/CneApp/CneApp.apk;REQUIRED=CneApp.libvndfwk_detect_jni.qti_vendor_symlink
 vendor/bin/cnd
-vendor/etc/cne/profileSlm.xml
-vendor/etc/cne/slm.conf
 vendor/etc/cne/wqeclient/ATT/ATT_profile1.xml
 vendor/etc/cne/wqeclient/ATT/ATT_profile2.xml
 vendor/etc/cne/wqeclient/ATT/ATT_profile3.xml
@@ -376,24 +374,26 @@ vendor/etc/cne/wqeclient/VZW/VZW_profile3.xml
 vendor/etc/cne/wqeclient/VZW/VZW_profile4.xml
 vendor/etc/cne/wqeclient/VZW/VZW_profile5.xml
 vendor/etc/cne/wqeclient/VZW/VZW_profile6.xml
+vendor/etc/cne/profileSlm.xml
+vendor/etc/cne/slm.conf
 vendor/etc/default-permissions/com.qualcomm.qti.cne.xml
 vendor/lib64/libcne.so
 vendor/lib64/libcneapiclient.so
-vendor/lib64/libcneoplookup.so 
+vendor/lib64/libcneoplookup.so
 vendor/lib64/libcneqmiutils.so
 vendor/lib64/libwms.so
 vendor/lib64/libwqe.so
 vendor/lib64/libxml.so
+vendor/lib64/vendor.qti.data.slm@1.0.so
 vendor/lib64/vendor.qti.hardware.data.cne.internal.api@1.0.so
 vendor/lib64/vendor.qti.hardware.data.cne.internal.constants@1.0.so
 vendor/lib64/vendor.qti.hardware.data.cne.internal.server@1.0.so
 vendor/lib64/vendor.qti.hardware.data.connection@1.0.so
 vendor/lib64/vendor.qti.hardware.data.connection@1.1.so
 vendor/lib64/vendor.qti.hardware.data.dynamicdds@1.0.so
-vendor/lib64/vendor.qti.hardware.slmadapter@1.0.so
-vendor/lib64/vendor.qti.data.slm@1.0.so
 vendor/lib64/vendor.qti.hardware.data.iwlan@1.0.so
 vendor/lib64/vendor.qti.hardware.data.qmi@1.0.so
+vendor/lib64/vendor.qti.hardware.slmadapter@1.0.so
 
 # Configstore
 vendor/bin/hw/vendor.qti.hardware.capabilityconfigstore@1.0-service
@@ -458,6 +458,7 @@ vendor/etc/gpfspath_oem_config.xml
 vendor/lib64/libGPreqcancel.so
 vendor/lib64/libGPreqcancel_svc.so
 vendor/lib64/libQSEEComAPI.so
+vendor/lib64/libStDrvInt.so
 vendor/lib64/libcpion.so
 vendor/lib64/libdrmfs.so
 vendor/lib64/libdrmtime.so
@@ -468,7 +469,6 @@ vendor/lib64/libsecureui.so
 vendor/lib64/libsecureui_svcsock.so
 vendor/lib64/libspl.so
 vendor/lib64/libssd.so
-vendor/lib64/libStDrvInt.so
 
 # DRM - Widevine
 vendor/bin/hw/android.hardware.drm@1.3-service.widevine
@@ -787,12 +787,12 @@ vendor/lib64/libqmi_legacy.so
 vendor/lib64/libqmiservices.so
 
 # Radio (system) - from qssi-user-14-UKQ1.230804.001-2309192131-release-keys
-system_ext/app/datastatusnotification/datastatusnotification.apk|3a77ab42db0992db7710e8cfcc7de369c4ed652f
 system_ext/app/QtiTelephonyService/QtiTelephonyService.apk|2f80916a0774012f5180373260a4ecd4b45e012b
-system_ext/priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk|4c2a5ad24c5c05fbcf1bb547b269ff6ce7cf2549
-system_ext/etc/permissions/telephony_system-ext_privapp-permissions-qti.xml|a7e114ea1e6909685ce49717a2b5b66d8275d419
+system_ext/app/datastatusnotification/datastatusnotification.apk|3a77ab42db0992db7710e8cfcc7de369c4ed652f
 system_ext/etc/permissions/qcrilhook.xml|30397e293b2c40e6b7a1d11c2a615cdd05de625a
+system_ext/etc/permissions/telephony_system-ext_privapp-permissions-qti.xml|a7e114ea1e6909685ce49717a2b5b66d8275d419
 system_ext/framework/qcrilhook.jar|4f1793b048ad62840b4e079673b3abab59adcdc9
+system_ext/priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk|4c2a5ad24c5c05fbcf1bb547b269ff6ce7cf2549
 
 # Radio (vendor)
 vendor/bin/hw/qcrild
@@ -898,18 +898,18 @@ system_ext/lib64/lib-imsvtextutils.so|19b0a5b9119388e735729e9a86ee7ee0a1355077
 system_ext/lib64/lib-imsvtutils.so|3b29b11cd751b12e1ab0664f7c5f683b2eda4ba6
 system_ext/lib64/libimscamera_jni.so|85f58c7cc4b84ca953f1d5e24500cc816a921b3d
 system_ext/lib64/libimsmedia_jni.so|13db7c0725cf7982e60a8cec1c8d7ece80ccda78
+system_ext/lib64/vendor.qti.ImsRtpService-V1-ndk.so|bb32703c026364da33ca1b4f83c839e1e312ae9b
 system_ext/lib64/vendor.qti.ims.callcapability@1.0.so|e3d9718062868d445b213ea5cc9939b9ca1de68b
 system_ext/lib64/vendor.qti.ims.callinfo@1.0.so|bab149dd7c7f202c1feece6fdf030383c0111e59
+system_ext/lib64/vendor.qti.ims.factory@1.0.so|d5c51fd2d5f864aa85b1f6a76ebe0fef743ad6f8
+system_ext/lib64/vendor.qti.ims.factory@1.1.so|b8bfb455e70d803b6bfb35378f70493f22beda75
+system_ext/lib64/vendor.qti.ims.factory@2.0.so|db4e50433f75566781c9f30b72648fab39b2cf1b
 system_ext/lib64/vendor.qti.ims.rcsconfig@1.0.so|91ec370057a2b970efe7a8dffb22aeb5061cda65
 system_ext/lib64/vendor.qti.ims.rcsconfig@1.1.so|4e326bc94061db9839102c1af24a2b00cd91e4e5
 system_ext/lib64/vendor.qti.ims.rcsconfig@2.0.so|276ea5b776a6947f95d5f3c9d7219852fd14a732
 system_ext/lib64/vendor.qti.ims.rcsconfig@2.1.so|21792652d0202f3bc4e93889ec6a36b84ba3edf6
-system_ext/lib64/vendor.qti.ImsRtpService-V1-ndk.so|bb32703c026364da33ca1b4f83c839e1e312ae9b
 system_ext/lib64/vendor.qti.imsrtpservice@3.0.so|919c4398097c8b818a415efccc57e989c7c24e10
 system_ext/lib64/vendor.qti.imsrtpservice@3.1.so|d1b6a6eabf17e43e98dcc4372fdabea4890f7cd8
-system_ext/lib64/vendor.qti.ims.factory@1.0.so|d5c51fd2d5f864aa85b1f6a76ebe0fef743ad6f8
-system_ext/lib64/vendor.qti.ims.factory@1.1.so|b8bfb455e70d803b6bfb35378f70493f22beda75
-system_ext/lib64/vendor.qti.ims.factory@2.0.so|db4e50433f75566781c9f30b72648fab39b2cf1b
 system_ext/priv-app/ims/ims.apk|78656f381ca9f688036068b5b9b196bd141bc4d8
 
 # Radio_IMS (vendor)
