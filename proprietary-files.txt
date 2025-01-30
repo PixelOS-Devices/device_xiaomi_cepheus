@@ -907,7 +907,7 @@ system_ext/lib64/vendor.qti.ims.factory@2.0.so|db4e50433f75566781c9f30b72648fab3
 system_ext/lib64/vendor.qti.ims.rcsconfig@1.0.so|91ec370057a2b970efe7a8dffb22aeb5061cda65
 system_ext/lib64/vendor.qti.ims.rcsconfig@1.1.so|4e326bc94061db9839102c1af24a2b00cd91e4e5
 system_ext/lib64/vendor.qti.ims.rcsconfig@2.0.so|276ea5b776a6947f95d5f3c9d7219852fd14a732
-system_ext/lib64/vendor.qti.ims.rcsconfig@2.1.so|21792652d0202f3bc4e93889ec6a36b84ba3edf6
+system_ext/lib64/vendor.qti.ims.rcsconfig@2.1.so|2375e0a0e35d35bd32de549a8fdf057cf1b27187
 system_ext/lib64/vendor.qti.imsrtpservice@3.0.so|919c4398097c8b818a415efccc57e989c7c24e10
 system_ext/lib64/vendor.qti.imsrtpservice@3.1.so|d1b6a6eabf17e43e98dcc4372fdabea4890f7cd8
 system_ext/priv-app/ims/ims.apk|78656f381ca9f688036068b5b9b196bd141bc4d8
