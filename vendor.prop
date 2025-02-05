@@ -223,6 +223,7 @@ ro.vendor.qti.va_odm.support=1
 
 #Media
 debug.stagefright.c2inputsurface=-1
+vendor.media.omx=0
 
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
