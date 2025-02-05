@@ -221,6 +221,9 @@ persist.vendor.ims.disableQXDMLogs=1
 ro.vendor.qti.va_aosp.support=1
 ro.vendor.qti.va_odm.support=1
 
+#Media
+debug.stagefright.c2inputsurface=-1
+
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
 
